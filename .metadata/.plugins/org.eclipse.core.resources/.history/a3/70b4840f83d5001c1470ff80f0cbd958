@@ -1,0 +1,10 @@
+package com.ezen.ex03;
+
+public class FruitBoxEx2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

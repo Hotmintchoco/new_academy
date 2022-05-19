@@ -1,0 +1,9 @@
+package com.ezen.ex06;
+
+public class WildcarUnBoxer {
+
+	public static void main(String[] args) {
+
+	}
+
+}

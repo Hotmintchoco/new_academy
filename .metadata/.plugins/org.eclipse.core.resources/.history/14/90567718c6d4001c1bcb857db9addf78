@@ -1,0 +1,23 @@
+
+class Apple {
+	@Override
+	public String toString() {
+		return "apple";
+	}
+}
+class Orange {
+	@Override
+	public String toString() {
+		return "orange";
+	}
+}
+
+
+public class GenericsEx1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

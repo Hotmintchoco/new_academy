@@ -1,0 +1,44 @@
+
+class Apple2 {
+	@Override
+	public String toString() {
+		return "apple";
+	}
+}
+
+class Orange2 {
+	@Override
+	public String toString() {
+		return "orange";
+	}
+}
+
+class Box2 {
+	private Object ob;
+
+	public Object getOb() {
+		return ob;
+	}
+
+	public void setOb(Object ob) {
+		this.ob = ob;
+	}
+}
+
+public class GenericsEx2 {
+
+	public static void main(String[] args) {
+		Box2 aBox = new Box2();
+		Box2 oBox = new Box2();
+		
+		aBox.setOb(new Apple2());
+		oBox.setOb(new Orange2());
+		
+		Apple2 ap = (Apple2)aBox.getOb();
+		System.out.println(ap);
+		
+		Orange2 or = (Orange2)oBox.getOb();
+		System.out.println(or);
+	}
+
+}

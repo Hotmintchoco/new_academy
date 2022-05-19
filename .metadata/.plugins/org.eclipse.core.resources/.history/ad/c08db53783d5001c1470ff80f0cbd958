@@ -1,0 +1,29 @@
+package com.ezen.ex03;
+
+import com.ezen.ex04.Box;
+
+class Box<T extends Number> {
+	private T ob;
+	
+	public void set(T o) {
+		ob = o;
+	}
+	
+	public T get() {
+		return ob;
+	}
+	
+	public int toIntValue() {
+		return ob.intValue();
+	}
+}
+
+class Person{}
+
+public class BoundedBox {
+	
+	public static void main(String[] args) {
+		Box<Double> aBox = new Box<>();
+	}
+
+}

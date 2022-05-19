@@ -1,0 +1,9 @@
+package com.ezen.ex05;
+
+public class CurrentThreadName {
+
+	public static void main(String[] args) {
+
+	}
+
+}
