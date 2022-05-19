@@ -42,9 +42,14 @@ public class Exercise11_14 {
 		while (true) {
 			switch (inputMenu) {
 			case 1:
+				menu = inputMenu;
+				return menu;
 			case 2:
+				menu = inputMenu;
+				return menu;
 			case 3:
-				return inputMenu;
+				menu = inputMenu;
+				return menu;
 			}
 		System.out.println("잘못 입력하셨습니다.");
 		return menu;
@@ -65,23 +70,15 @@ public class Exercise11_14 {
 					System.out.println("메인화면으로 돌아갑니다.");
 					break;
 				} else {
-					String[] instance = grade.split(",");
-					int[] intInstance = new int[instance.length];
-
-					for (int i = 0; i < instance.length; i++) {
-						instance[i] = instance[i].trim();
-
-						if (i >= 1) {
-							intInstance[i] = Integer.parseInt(instance[i]);
-						}
+					StringTokenizer st = new StringTokenizer(grade, ",");
+					
+					while(st.hasMoreTokens()) {
+						String str = st.nextToken();
+						int intSt = Integer.parseInt(st.nextToken());
+						record.add(new Student(str, intSt,
+								intSt, intSt,
+								intSt,intSt));
 					}
-					if (instance.length < 5) {
-						throw new Exception();
-					}
-
-					record.add(new Student(instance[0], intInstance[1],
-							intInstance[2], intInstance[3],
-							intInstance[4],intInstance[5]));
 				}
 			} catch (Exception e) {
 				System.out.println("입력오류입니다.");

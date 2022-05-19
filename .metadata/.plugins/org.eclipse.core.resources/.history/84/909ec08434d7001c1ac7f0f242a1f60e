@@ -42,9 +42,14 @@ public class Exercise11_14 {
 		while (true) {
 			switch (inputMenu) {
 			case 1:
+				menu = inputMenu;
+				return menu;
 			case 2:
+				menu = inputMenu;
+				return menu;
 			case 3:
-				return inputMenu;
+				menu = inputMenu;
+				return menu;
 			}
 		System.out.println("잘못 입력하셨습니다.");
 		return menu;
@@ -69,7 +74,7 @@ public class Exercise11_14 {
 					int[] intInstance = new int[instance.length];
 
 					for (int i = 0; i < instance.length; i++) {
-						instance[i] = instance[i].trim();
+						instance[i].trim();
 
 						if (i >= 1) {
 							intInstance[i] = Integer.parseInt(instance[i]);
