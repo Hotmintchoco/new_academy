@@ -172,7 +172,7 @@ class Student implements Comparable {
 	}
 	
 	public String toString() {
-		return name + ", " + ban + ", " + no + ", " +
+		return name + ", " + ban + ", " + no + 
 				kor + ", " + eng + ", " + math +
 				", " + getTotal() + ", " + getAverage() + ", " +
 				schoolRank + ", " + classRank;
