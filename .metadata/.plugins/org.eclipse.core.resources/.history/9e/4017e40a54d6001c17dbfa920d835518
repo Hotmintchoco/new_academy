@@ -1,9 +1,0 @@
-package com.ezen.ex05;
-
-public class MultualAccess {
-
-	public static void main(String[] args) {
-
-	}
-
-}

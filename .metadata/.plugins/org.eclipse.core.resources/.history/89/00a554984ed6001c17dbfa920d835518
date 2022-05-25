@@ -1,9 +1,0 @@
-package com.ezen.ex05;
-
-public class MakeThreadEx01 {
-
-	public static void main(String[] args) {
-
-	}
-
-}

@@ -1,9 +1,0 @@
-package com.ezen.ex01;
-
-public class GenericMethodBox {
-
-	public static void main(String[] args) {
-
-	}
-
-}

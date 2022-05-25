@@ -1,9 +1,0 @@
-package com.ezen.ex06;
-
-public class ThreadEx7 {
-
-	public static void main(String[] args) {
-
-	}
-
-}
