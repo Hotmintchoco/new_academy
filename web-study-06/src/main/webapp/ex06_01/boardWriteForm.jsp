@@ -30,7 +30,7 @@
 		<tr>
 			<td> 글 내용  </td>
 			<td> <textarea name="content" 
-				rows="10" cols="180"></textarea></td>
+				rows="10" cols="100"></textarea></td>
 		</tr>
 	</table>
 	<table style="margin: 0 auto">
