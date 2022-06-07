@@ -20,12 +20,13 @@ public class BoardDAO {
 	}
 	
 	//MySql 연결
-	public void getConnection() {
+	public Connection getConnection() {
 		try {
 			conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return conn;
 	}
 	
 	//MySql 해제
@@ -50,7 +51,7 @@ public class BoardDAO {
 			int rowSize = 10;
 			int start = (rowSize * page) - rowSize;
 			//10*1 - 10 = 0,10 ..... 10*2 - 10 = 10,10 ... 10*3-10 = 20,10....
-			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'), hit"
+			String sql = "select no, subject, name, DATE_FORMAT(regdate, '%Y-%m-%d'), hit "
 					+ "from jspBoard order by no desc limit ?, ?";
 			
 			//3. 전송
@@ -103,5 +104,102 @@ public class BoardDAO {
 		}
 		
 		return total;
+	}
+	
+	public void boardInsert(BoardVO vo) {
+		String sql = "insert into jspBoard(name, subject, content, pwd, regdate)"
+				+ " values(?, ?, ?, ?, now())";
+		try {
+			conn = getConnection();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getName());
+			ps.setString(2, vo.getSubject());
+			ps.setString(3, vo.getContent());
+			ps.setString(4, vo.getPwd());
+			ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnetion();
+		}
+	}
+	
+	//상세보기 (조회수 담당)
+	public BoardVO boardDetailDate(int no) {
+		BoardVO vo = new BoardVO();
+		
+		try {
+			//1. 연결
+			getConnection();
+			
+			//*. 조회수 증가
+			String sql = "update jspBoard set hit = hit+1 "
+					+ "where no = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, no);
+			ps.executeUpdate();
+			
+			//2. sql문장
+			sql = "select no, name, subject, content, DATE_FORMAT"
+					+ "(regdate, '%Y-%m-%d'), hit "
+					+ "from jspBoard where no=?";
+			//3. 전송
+			ps = conn.prepareStatement(sql);
+			//4. 빈칸 채우기
+			ps.setInt(1, no);
+			//5. 실행
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSubject(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setDbday(rs.getString(5));
+				vo.setHit(rs.getInt(6));
+				rs.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnetion();
+		}
+		return vo;
+	}
+	
+	//5. 수정하기(Update)
+	public BoardVO boardUpdateData(int no) {
+		BoardVO vo = new BoardVO();
+		
+		try {
+			//1. 연결
+			getConnection();
+			
+			//2. sql문장
+			String sql = "select no, name, subject, content, DATE_FORMAT"
+					+ "(regdate, '%Y-%m-%d'), hit "
+					+ "from jspBoard where no=?";
+			//3. 전송
+			ps = conn.prepareStatement(sql);
+			//4. 빈칸 채우기
+			ps.setInt(1, no);
+			//5. 실행
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				vo.setNo(rs.getInt(1));
+				vo.setName(rs.getString(2));
+				vo.setSubject(rs.getString(3));
+				vo.setContent(rs.getString(4));
+				vo.setDbday(rs.getString(5));
+				vo.setHit(rs.getInt(6));
+				rs.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			disConnetion();
+		}
+		return vo;
 	}
 }

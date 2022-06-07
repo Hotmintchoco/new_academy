@@ -19,8 +19,16 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url="member/login.jsp";
+		
+		HttpSession session=request.getSession();
+		
+		if (session.getAttribute("loginUser") != null) {
+			url="main.jsp";
+		}
 		RequestDispatcher dispatcher = request.
-				getRequestDispatcher("member/login.jsp");
+				getRequestDispatcher(url);
+		
 		dispatcher.forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

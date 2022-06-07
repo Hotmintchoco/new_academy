@@ -119,11 +119,22 @@
 
 				<Context docBase="web-study-09" path="/web-study-09"
 					reloadable="true" source="org.eclipse.jst.jee.server:web-study-09">
-				<Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-              username="scott" password="tiger" maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>
+					<Resource auth="Container"
+						driverClassName="oracle.jdbc.OracleDriver" maxIdle="10"
+						maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle"
+						password="tiger" type="javax.sql.DataSource"
+						url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="scott" />
+				</Context>
+				<Context docBase="BoardJspProject" path="/BoardJspProject"
+					reloadable="true"
+					source="org.eclipse.jst.jee.server:BoardJspProject" />
+				<Context docBase="web-project" path="/web-project"
+					reloadable="true" source="org.eclipse.jst.jee.server:web-project">
+					<Resource auth="Container"
+						driverClassName="oracle.jdbc.OracleDriver" maxIdle="10"
+						maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle"
+						password="tiger" type="javax.sql.DataSource"
+						url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="scott" />
 				</Context>
 			</Host>
 		</Engine>
