@@ -63,6 +63,7 @@
 						<input type="submit" value="수정" class="btn btn-sm btn-primary">
 						<input type="button" value="취소" class="btn btn-sm btn-primary"
 						onclick="javascript:history.back()">
+						<input type="hidden" name="no" value=<%=vo.getNo()%>>
 						</td>
 					</tr>
 				</table>

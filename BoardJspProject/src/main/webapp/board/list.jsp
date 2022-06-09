@@ -2,6 +2,7 @@
     pageEncoding="UTF-8" import="java.util.*, com.it.dao.*, java.text.*"%>
 <jsp:useBean id="dao" class="com.it.dao.BoardDAO"/>
 <%
+	//1. 사용자 입력값 받기(page)
 	String strpage = request.getParameter("page");
 
 	if(strpage == null) strpage = "1";
@@ -86,7 +87,7 @@
 					<%
 						if(startPage > 1) {
 					%>
-						<li><a href="list.jsp?page=<%=startPage-1%>">&lt;</a></li>
+						<li><a href="list.jsp?page=<%=startPage-3%>">&lt;</a></li>
 					<%		
 						}
 				  	for(int i=startPage; i<=endPage; i++){
