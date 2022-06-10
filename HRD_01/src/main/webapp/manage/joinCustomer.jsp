@@ -32,7 +32,7 @@
 <jsp:include page="header.jsp"/>
 <div>
 	<section>
-		<h2>쇼핑몰 회원관리 프로그램</h2>
+		<h2>홈쇼핑 회원 등록</h2>
 		<form action="join_impl.jsp" name="frm">
 		<table>
 			<tr>
@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<th>가입일자</th>
-				<td><input type="text" name="date"></td>
+				<td><input type="text" name="joindate"></td>
 			</tr>
 			<tr>
 				<th>고객등급[A:VIP,B:일반,C:직원]</th>
