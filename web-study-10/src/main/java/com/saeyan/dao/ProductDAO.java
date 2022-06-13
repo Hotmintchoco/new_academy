@@ -46,4 +46,53 @@ public class ProductDAO {
 		}
 		return list;
 	}
+	
+	public int insertProduct(ProductVO pVo) {
+		int result = -1;
+		String sql = "insert into product values(product_seq.nextval,"
+				+ "?, ?, ?, ?)";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureurl());
+			pstmt.setString(4, pVo.getDescription());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.closeConnection(conn, pstmt);
+		}
+		return result;
+	}
+	
+	public ProductVO selectProductByCode(String code) {
+		String sql = "select * from product where code=?";
+		ProductVO pVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				pVo = new ProductVO();
+				pVo.setCode(rs.getInt("code"));
+				pVo.setName(rs.getString("name"));
+				pVo.setPrice(rs.getInt("price"));
+				pVo.setPictureurl(rs.getString("pictureUrl"));
+				pVo.setDescription(rs.getString("description"));
+				}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+		DBManager.closeConnection(conn, pstmt, rs);
+		}
+		return pVo;
+	}
 }
