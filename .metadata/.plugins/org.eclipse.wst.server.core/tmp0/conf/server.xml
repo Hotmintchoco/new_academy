@@ -108,7 +108,7 @@
 				<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\HRD_01" path="/HRD_01" reloadable="true" source="org.eclipse.jst.jee.server:HRD_01"/>
 				<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\hrd정보처리산업기사" path="/hrd정보처리산업기사" reloadable="true" source="org.eclipse.jst.jee.server:hrd정보처리산업기사"/>
 				<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\web-study-09" path="/web-study-09" reloadable="true" source="org.eclipse.jst.jee.server:web-study-09"/>
-			</Host>
+			<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\web-project" path="/web-project" reloadable="true" source="org.eclipse.jst.jee.server:web-project"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\JusoTest" path="/JusoTest" reloadable="true" source="org.eclipse.jst.jee.server:JusoTest"/></Host>
 		</Engine>
 	</Service>
 </Server>
