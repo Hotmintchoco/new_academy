@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/shopping.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
 <div id="wrap" align="center">
@@ -14,7 +15,8 @@
 	<table class="list">
 		<tr>
 			<td colspan="5" style="border: white; text-align: right">
-				<a href="productWrite.do">상품 등록</a>
+				<button onclick="location.href='productWrite.do'"
+				class="btn btn-info">상품등록</button>
 			</td>
 		</tr>
 		

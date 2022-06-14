@@ -95,4 +95,44 @@ public class ProductDAO {
 		}
 		return pVo;
 	}
+	
+	public int updateProduct(ProductVO pVo) {
+		int result = -1;
+		String sql = "update product set name=?, price=?, pictureurl=?,"
+				+ "description=? where code=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureurl());
+			pstmt.setString(4, pVo.getDescription());
+			pstmt.setInt(5, pVo.getCode());
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.closeConnection(conn, pstmt);
+		}
+		return result;
+	}
+
+	public void deleteProduct(String code) {
+		String sql = "delete product where code=?";
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			pstmt.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.closeConnection(conn, pstmt);
+		}
+	}
+	
 }

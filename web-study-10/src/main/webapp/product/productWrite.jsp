@@ -23,7 +23,7 @@
 			<tr>
 				<th> 사 진 </th>
 				<td>
-				<input type="file" name="pictuerUrl"><br>
+				<input type="file" name="pictureUrl"><br>
 				(주의사항 : 이미지를 변경하고자 할때만 선택하세요.)
 				</td>
 			</tr>

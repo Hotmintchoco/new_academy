@@ -40,13 +40,13 @@ public class ProductWriteServlet extends HttpServlet {
 		String name = multi.getParameter("name");
 		int price = Integer.parseInt(multi.getParameter("price"));
 		String description = multi.getParameter("description");
-		String prictureUrl = multi.getFilesystemName("prictureUrl");
+		String pictureUrl = multi.getFilesystemName("pictureUrl");
 		
 		ProductVO pVo = new ProductVO();
 		pVo.setName(name);
 		pVo.setPrice(price);
 		pVo.setDescription(description);
-		pVo.setPictureurl(prictureUrl);
+		pVo.setPictureurl(pictureUrl);
 		
 		ProductDAO pDao = ProductDAO.getInstance();
 		int result = pDao.insertProduct(pVo);
