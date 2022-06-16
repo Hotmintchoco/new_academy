@@ -22,7 +22,7 @@
 		<c:forEach var="board" items="${boardList}">
 			<tr class="record">
 				<td>${board.num}</td>
-				<td><a href="BoardServlet?command=board_view&num=${board.num}">
+				<td><a href="BoardServlet?command=board_view&num=${board.id}">
 				${board.title}
 				</a></td>
 				<td>${board.name}</td>
