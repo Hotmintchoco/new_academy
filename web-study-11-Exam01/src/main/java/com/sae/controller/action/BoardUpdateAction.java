@@ -15,17 +15,17 @@ public class BoardUpdateAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EmployeeVO bVo = new EmployeeVO();
 		
-		bVo.setNum(Integer.parseInt(request.getParameter("num")));
+		bVo.setId(request.getParameter("id"));
 		bVo.setName(request.getParameter("name"));
 		bVo.setPass(request.getParameter("pass"));
-		bVo.setEmail(request.getParameter("email"));
-		bVo.setTitle(request.getParameter("title"));
-		bVo.setContent(request.getParameter("content"));
+		bVo.setLev(request.getParameter("lev"));
+		bVo.setGender(Integer.parseInt(request.getParameter("gender")));
+		bVo.setPhone(request.getParameter("phone"));
 		
 		EmployeeDAO bDao = EmployeeDAO.getInstance();
 		bDao.updateBoard(bVo);
 		
-		response.sendRedirect("BoardServlet");
+		response.sendRedirect("EmployeeServlet");
 	}
 
 }

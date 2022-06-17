@@ -14,11 +14,10 @@ public class BoardUpdateFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "board/boardUpdate.jsp";
-		String num = request.getParameter("num");
+		String url = "employee/boardUpdate.jsp";
+		String id = request.getParameter("id");
 		EmployeeDAO bDao = EmployeeDAO.getInstance();
-		bDao.updateReadCount(num);
-		EmployeeVO bVo = bDao.selectOneBoardByNum(num);
+		EmployeeVO bVo = bDao.selectOneBoardById(id);
 		
 		request.setAttribute("board", bVo);
 		

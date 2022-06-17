@@ -12,39 +12,52 @@
 <body>
 <div id="wrap" align="center">
 	<h1> 게시글 수정 </h1>
-	<form name="frm" method="post" action="BoardServlet">
+	<form name="frm" method="post" action="EmployeeServlet">
 		<input type="hidden" name="command" value="board_update">
-		<input type="hidden" name="num" value="${board.num}">
 		<table>
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="name" size="12" value="${board.name}">
-				 * 필수</td>
+				<th>아이디</th>
+				<td><input type="text" name="id" size="30" value="${board.id}" readonly>
+				</td>
 			</tr>
 			<tr>
 				<th>비밀번호</th>
-				<td><input type="password" name="pass" size="12" value="${board.pass}">
-				 * 필수 (게시물 수정 삭제시 필요합니다.)</td>
+				<td><input type="password" name="pass" size="30" value="${board.pass}">
+				 </td>
 			</tr>
 			<tr>
-				<th>이메일</th>
-				<td><input type="text" name="email" size="40" maxlength="50"
-				name="email" value="${board.email}"></td>
+				<th>이름</th>
+				<td><input type="text" name="name" size="30" value="${board.name}">
+				 </td>
 			</tr>
 			<tr>
-				<th>제목</th>
-				<td><input type="text" size="70" name="title"
-				value="${board.title}"></td>
+				<th>권한</th>
+				<td>
+					<select name="lev" size="1">
+						<option value="A">운영자</option>
+						<option value="B">일반회원</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
-				<th>내용</th>
-				<td><textarea cols="70" rows="15" name="content">${board.content}</textarea></td>
+				<th>성별</th>
+				<td>
+					<select name="gender">
+						<option value="1">남자</option>
+						<option value="2">여자</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td><input type="text" size="30" name="phone"
+				value="${board.phone}"></td>
 			</tr>
 		</table>
 		<br><br>
 		<input type="submit" value="등록" onclick="return boardCheck()">
-		<input type="reset" value="다시 작성">
-		<input type="button" value="목록" onclick="location.href='BoardServlet?command=board_list'">
+		<input type="reset" value="취소">
+		<input type="button" value="목록" onclick="location.href='EmployeeServlet?command=employee_list'">
 	</form>
 </div>
 </body>

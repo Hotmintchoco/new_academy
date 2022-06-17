@@ -53,7 +53,7 @@
 		<br>
 		<input type="submit" value="등록" onclick="return boardCheck()">
 		<input type="reset" value="취소">
-		<input type="button" value="목록" onclick="location.href='EmployeeServlet?command=board_list'">
+		<input type="button" value="목록" onclick="location.href='EmployeeServlet?command=employee_list'">
 	</form>
 </div>
 </body>

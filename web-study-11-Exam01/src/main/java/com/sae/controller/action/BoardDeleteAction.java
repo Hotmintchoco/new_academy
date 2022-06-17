@@ -12,12 +12,12 @@ public class BoardDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String num = request.getParameter("num");
+		String id = request.getParameter("id");
 		
 		EmployeeDAO bDao = EmployeeDAO.getInstance();
-		bDao.deleteBoard(num);
+		bDao.deleteBoard(id);
 		
-		response.sendRedirect("BoardServlet");
+		response.sendRedirect("EmployeeServlet");
 	}
 
 }

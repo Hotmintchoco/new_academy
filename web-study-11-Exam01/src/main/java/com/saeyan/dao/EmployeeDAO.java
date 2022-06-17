@@ -106,8 +106,8 @@ public class EmployeeDAO {
 	}
 
 	public void updateBoard(EmployeeVO bVo) {
-		String sql = "update board set name=?, email=?, pass=?, "
-				+ "title=?, content=? where num=?";
+		String sql = "update employees set name=?, pass=?, "
+				+ "lev=?, gender=?, phone=? where id=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -117,11 +117,11 @@ public class EmployeeDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, bVo.getName());
-			pstmt.setString(2, bVo.getEmail());
-			pstmt.setString(3, bVo.getPass());
-			pstmt.setString(4, bVo.getTitle());
-			pstmt.setString(5, bVo.getContent());
-			pstmt.setInt(6, bVo.getNum());
+			pstmt.setString(2, bVo.getPass());
+			pstmt.setString(3, bVo.getLev());
+			pstmt.setInt(4, bVo.getGender());
+			pstmt.setString(5, bVo.getPhone());
+			pstmt.setString(6, bVo.getId());
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -131,8 +131,8 @@ public class EmployeeDAO {
 		}
 	}
 
-	public void deleteBoard(String num) {
-		String sql = "delete board where num=?";
+	public void deleteBoard(String id) {
+		String sql = "delete employees where id=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -140,7 +140,7 @@ public class EmployeeDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, Integer.parseInt(num));
+			pstmt.setString(1, id);
 			
 			pstmt.executeUpdate();
 		} catch (Exception e) {
