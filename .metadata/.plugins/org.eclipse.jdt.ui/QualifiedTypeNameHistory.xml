@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="sun.rmi.rmic.IndentingWriter"/>
-    <fullyQualifiedTypeName name="lombok.Setter"/>
-    <fullyQualifiedTypeName name="lombok.Getter"/>
-    <fullyQualifiedTypeName name="javax.naming.Context"/>
-    <fullyQualifiedTypeName name="javax.sql.DataSource"/>
-    <fullyQualifiedTypeName name="java.beans.Statement"/>
-    <fullyQualifiedTypeName name="javax.servlet.ServletContext"/>
-    <fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
-    <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
-    <fullyQualifiedTypeName name="java.awt.datatransfer.Clipboard"/>
-    <fullyQualifiedTypeName name="com.saeyan.dao.ProductDAO"/>
-    <fullyQualifiedTypeName name="com.saeyan.dto.ProductVO"/>
-    <fullyQualifiedTypeName name="java.lang.OutOfMemoryError"/>
     <fullyQualifiedTypeName name="com.saeyan.dao.MovieDAO"/>
     <fullyQualifiedTypeName name="com.saeyan.dto.MemberVO"/>
     <fullyQualifiedTypeName name="java.security.Timestamp"/>
@@ -41,18 +28,13 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.ezen.mybatis.BoardMethod"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.ezen.mybatis.BoardVO"/>
     <fullyQualifiedTypeName name="sun.reflect.generics.tree.VoidDescriptor"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.generic.NEW"/>
     <fullyQualifiedTypeName name="polymorphism.BeanFactory"/>
-    <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
-    <fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
-    <fullyQualifiedTypeName name="polymorphism.SamsungTV"/>
     <fullyQualifiedTypeName name="polymorphism.LgTV"/>
     <fullyQualifiedTypeName name="com.ezen.util.Calc"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
@@ -60,4 +42,22 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="com.ezen.prj.BoardVO"/>
+    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.net.SocketOptions"/>
+    <fullyQualifiedTypeName name="polymorphism.SamsungTV"/>
+    <fullyQualifiedTypeName name="polymorphism.SonySpeaker"/>
+    <fullyQualifiedTypeName name="polymorphism.User"/>
+    <fullyQualifiedTypeName name="polymorphism.Speaker"/>
+    <fullyQualifiedTypeName name="polymorphism.AppleSpeaker"/>
+    <fullyQualifiedTypeName name="org.aspectj.runtime.internal.cflowstack.ThreadStackFactoryImpl"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.GenericApplicationContext"/>
+    <fullyQualifiedTypeName name="org.springframework.context.support.GenericXmlApplicationContext"/>
+    <fullyQualifiedTypeName name="com.spring.book.ioc.injection.CollectionBean"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.BeanFactoryExtensionsKt"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Set"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.Properties"/>
 </qualifiedTypeNameHistroy>
