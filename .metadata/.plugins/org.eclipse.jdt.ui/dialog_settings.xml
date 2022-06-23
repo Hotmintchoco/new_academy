@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="2"/>
 	<item key="org.eclipse.jdt.ui.last.selected.execution.enviroment" value="JavaSE-11"/>
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\utils"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\H2DB\h2-2022-06-13\h2\bin"/>
 	<item key="Annotations" value="false"/>
 	<item key="Replace" value="false"/>
 	<item key="Comments" value="false"/>
@@ -107,6 +107,8 @@
 		<item key="JarManifestWizardPage.MANIFEST_LOCATION" value=""/>
 		<item key="JarManifestWizardPage.SEAL_JAR" value="false"/>
 		<list key="JarPackageWizardPage.DESTINATION_NAMES_ID">
+			<item value="C:\utils\김정민.jar"/>
+			<item value="C:\utils\examPrj.jar"/>
 			<item value="C:\utils\buildTest.jar"/>
 		</list>
 	</section>
