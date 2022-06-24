@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
-    <fullyQualifiedTypeName name="com.ezen.prj.BoardVO"/>
-    <fullyQualifiedTypeName name="org.apache.logging.log4j.core.net.SocketOptions"/>
-    <fullyQualifiedTypeName name="polymorphism.SonySpeaker"/>
     <fullyQualifiedTypeName name="polymorphism.User"/>
     <fullyQualifiedTypeName name="polymorphism.Speaker"/>
     <fullyQualifiedTypeName name="polymorphism.AppleSpeaker"/>
@@ -25,13 +19,10 @@
     <fullyQualifiedTypeName name="com.springbook.biz.board.impl.BoardDAO"/>
     <fullyQualifiedTypeName name="java.lang.AbstractMethodError"/>
     <fullyQualifiedTypeName name="com.springbook.biz.board.BoardService"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="com.springbook.biz.board.BoardVO"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
     <fullyQualifiedTypeName name="java.net.http.HttpConnectTimeoutException"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="com.springbook.biz.common.JDBCUtil"/>
     <fullyQualifiedTypeName name="com.springbook.biz.user.impl.UserDAO"/>
     <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
@@ -42,9 +33,7 @@
     <fullyQualifiedTypeName name="com.springbook.biz.common.Log4jAdvice"/>
     <fullyQualifiedTypeName name="polymorphism.TV"/>
     <fullyQualifiedTypeName name="polymorphism.SamsungTV"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
     <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
     <fullyQualifiedTypeName name="org.graalvm.compiler.lir.amd64.vector.AMD64VectorMove.SaveRegistersOp"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.ProceedingJoinPoint"/>
@@ -54,10 +43,21 @@
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="org.springframework.util.StopWatch"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Before"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterReturning"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Aspect"/>
     <fullyQualifiedTypeName name="org.aspectj.lang.annotation.Pointcut"/>
+    <fullyQualifiedTypeName name="org.aspectj.lang.annotation.AfterThrowing"/>
+    <fullyQualifiedTypeName name="org.springframework.jdbc.core.JdbcTemplate"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="javax.swing.tree.RowMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="com.springbook.biz.board.BoardVO"/>
+    <fullyQualifiedTypeName name="sun.security.timestamp.TSRequest"/>
+    <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
 </qualifiedTypeNameHistroy>

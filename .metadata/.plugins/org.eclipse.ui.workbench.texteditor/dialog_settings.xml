@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="aspect"/>
+		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="jdbc"/>
 			<item value="aspect"/>
 			<item value="asfect"/>
 			<item value="} catch (Exception e) {"/>
