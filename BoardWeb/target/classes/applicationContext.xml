@@ -13,7 +13,7 @@
 	<context:component-scan base-package="com.springbook.biz">
 	</context:component-scan>
 	
-	<context:property-placeholder location="classpath:config/database.properties"/>
+	<!-- <context:property-placeholder location="classpath:config/database.properties"/>
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driver}"/>
@@ -24,7 +24,9 @@
 	
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource" />
-	</bean>
+	</bean> -->
+	
+	<import resource="context-datasource.xml"/>
 	
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"></property>
@@ -39,7 +41,7 @@
 	
 	<aop:config>
 		<aop:pointcut id="txPointcut" 
-				expression="execution(* com.springbook.biz..*(..))"/>
+				expression="execution(* com.springbook.biz..*impl.*(..))"/>
 		
 		<aop:advisor pointcut-ref="txPointcut" advice-ref="txAdvice"/>
 	</aop:config>
