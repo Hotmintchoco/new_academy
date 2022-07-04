@@ -27,7 +27,7 @@ public class UpdateBoardController implements Controller{
 		boardDAO.updateBoard(vo);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("getBoardList.do");
+		mav.setViewName("redirect:getBoardList.do");
 		return mav;
 	}
 
