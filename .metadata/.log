@@ -2310,3 +2310,9 @@ java.lang.IllegalArgumentException: Comparison method violates its general contr
 
 !ENTRY org.eclipse.m2e.logback.appender 2 0 2022-07-04 17:50:17.131
 !MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-07-04 17:54:04.432
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2022-07-04 17:54:04.434
+!MESSAGE Using platform encoding (MS949 actually) to copy filtered resources, i.e. build is platform dependent!

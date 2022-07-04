@@ -15,7 +15,7 @@ public class GetBoardListController {
 		System.out.println("글 목록 조회 처리");
 
 		mav.addObject("boardList", boardDAO.getBoardList(vo));
-		mav.setViewName("getBoardList");
+		mav.setViewName("getBoardList.jsp");
 		return mav;
 	}
    
