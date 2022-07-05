@@ -105,8 +105,8 @@
 
 
 
-				<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWeb" path="/BoardWeb" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb"/>
-			<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\tripProject" path="/app" reloadable="true" source="org.eclipse.jst.jee.server:tripProject"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWeb2" path="/biz" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb2"/></Host>
+				
+			<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BoardWeb2" path="/biz" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb2"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\bookShop01" path="/mytest04" reloadable="true" source="org.eclipse.jst.jee.server:bookShop01"/></Host>
 		</Engine>
 	</Service>
 </Server>

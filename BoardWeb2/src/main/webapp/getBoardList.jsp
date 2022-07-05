@@ -17,7 +17,7 @@
 </head>
 <body>
 <h1>글 목록</h1>
-<h3>테스트님 환영합니다... <a href="logout_proc.jsp">Log-out</a></h3>
+<h3>${userName}님 환영합니다... <a href="logout.do">Log-out</a></h3>
 
 <div>
 <form action="getBoardList.do" method="post">
@@ -25,8 +25,9 @@
 		<tr>
 			<td align="right">
 				<select name="searchCondition">
-				<option value="title">제목
-				<option value="content">내용
+				<c:forEach items="${conditionMap}" var="option">
+					<option value="${option.value}">${option.key}
+				</c:forEach>
 				</select>
 				<input type="text" name="searchKeyword">
 				<input type="submit" value="검색">

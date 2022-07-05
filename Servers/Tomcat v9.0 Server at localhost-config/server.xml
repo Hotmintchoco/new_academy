@@ -105,8 +105,8 @@
 
 
 
-				<Context docBase="BoardWeb" path="/BoardWeb" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb"/>
-			<Context docBase="tripProject" path="/app" reloadable="true" source="org.eclipse.jst.jee.server:tripProject"/><Context docBase="BoardWeb2" path="/biz" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb2"/></Host>
+				
+			<Context docBase="BoardWeb2" path="/biz" reloadable="true" source="org.eclipse.jst.jee.server:BoardWeb2"/><Context docBase="bookShop01" path="/mytest04" reloadable="true" source="org.eclipse.jst.jee.server:bookShop01"/></Host>
 		</Engine>
 	</Service>
 </Server>

@@ -14,7 +14,6 @@
 <body>
 <h1>글 등록</h1>
 <div>
-	<a href="logout_proc.jsp">Log-out</a>
 </div>
 <hr>
 <form action="insertBoard.do" method="post">
