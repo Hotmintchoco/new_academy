@@ -23,9 +23,10 @@ public class BoardDAO {
 			+ "content=? where seq=?";
 	private final String BOARD_DELETE = "delete board where seq=?";
 	private final String BOARD_GET= "select * from board where seq=?";
-	private final String BOARD_LIST= "select * from board order by seq desc";
-	private final String BOARD_TITLE_LIST= "select * from board where title like ? order by seq desc";
-	private final String BOARD_CONTENT_LIST= "select * from board where content like ? order by seq desc";
+	private final String BOARD_LIST_T= 
+			"select * from board where title like '%'||?||'%' order by seq desc";
+	private final String BOARD_LIST_C= 
+			"select * from board where content like '%'||?||'%' order by seq desc";
 	
 	//글 등록
 	public void insertBoard(BoardVO vo) {
@@ -133,7 +134,12 @@ public class BoardDAO {
 		List<BoardVO> boardList = new ArrayList<BoardVO>();
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_LIST);
+			if (vo.getSearchCondition().equals("title")) {
+				stmt = conn.prepareStatement(BOARD_LIST_T);
+			} else if(vo.getSearchCondition().equals("content")) {
+				stmt = conn.prepareStatement(BOARD_LIST_C);
+			}
+			stmt.setString(1, vo.getSearchKeyword());
 			rs = stmt.executeQuery();
 			while (rs.next()) {
 				BoardVO board = new BoardVO();
@@ -153,55 +159,4 @@ public class BoardDAO {
 		return boardList;
 	}
 	
-	public List<BoardVO> getBoardSearchTitleList(BoardVO vo) {
-		System.out.println("===> JDBC로 getBoardSearchTitleList() 기능 처리");
-		List<BoardVO> boardList = new ArrayList<BoardVO>();
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_TITLE_LIST);
-			stmt.setString(1, "%" + (vo.getTitle()) + "%");
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				BoardVO board = new BoardVO();
-				board.setSeq(rs.getInt("SEQ"));
-				board.setTitle(rs.getString("title"));
-				board.setWriter(rs.getString("writer"));
-				board.setContent(rs.getString("content"));
-				board.setRegDate(rs.getDate("regdate"));
-				board.setCnt(rs.getInt("CNT"));
-				boardList.add(board);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(rs, stmt, conn);
-		}
-		return boardList;
-	}
-	
-	public List<BoardVO> getBoardSearchContentList(BoardVO vo) {
-		System.out.println("===> JDBC로 getBoardSearchContentList() 기능 처리");
-		List<BoardVO> boardList = new ArrayList<BoardVO>();
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_CONTENT_LIST);
-			stmt.setString(1, "%" + (vo.getContent()) + "%");
-			rs = stmt.executeQuery();
-			while (rs.next()) {
-				BoardVO board = new BoardVO();
-				board.setSeq(rs.getInt("SEQ"));
-				board.setTitle(rs.getString("title"));
-				board.setWriter(rs.getString("writer"));
-				board.setContent(rs.getString("content"));
-				board.setRegDate(rs.getDate("regdate"));
-				board.setCnt(rs.getInt("CNT"));
-				boardList.add(board);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			JDBCUtil.close(rs, stmt, conn);
-		}
-		return boardList;
-	}
 }

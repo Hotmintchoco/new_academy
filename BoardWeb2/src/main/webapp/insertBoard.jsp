@@ -16,7 +16,7 @@
 <div>
 </div>
 <hr>
-<form action="insertBoard.do" method="post">
+<form action="insertBoard.do" method="post" enctype="multipart/form-data">
 	<table border="1">
 		<tr>
 			<td bgcolor="orange" width="70">제목</td>
@@ -29,6 +29,10 @@
 		<tr>
 			<td bgcolor="orange">내용</td>
 			<td><textarea cols="40" rows="10" name="content"></textarea></td>
+		</tr>
+		<tr>
+			<td bgcolor="orange">업로드</td>
+			<td align="left"><input type="file" name="uploadFile"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

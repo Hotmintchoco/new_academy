@@ -19,7 +19,6 @@ public class BoardServiceimpl implements BoardService{
 //			throw new IllegalArgumentException("0踰� 湲��� �벑濡앺븷 �닔 �뾾�뒿�땲�떎.");
 //		}
 		boardDAO.insertBoard(vo);
-		boardDAO.insertBoard(vo);
 	}
 
 	public void updateBoard(BoardVO vo) {
