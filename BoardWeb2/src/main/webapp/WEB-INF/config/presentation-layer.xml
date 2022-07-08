@@ -13,7 +13,7 @@
 		<property name="maxUploadSize" value="100000" />
 	</bean>
 	
-	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
 				<prop key="java.lang.ArithmeticException">
@@ -25,7 +25,7 @@
 			</props>
 		</property>
 		<property name="defaultErrorView" value="common/error.jsp"></property>
-	</bean>
+	</bean> -->
 	
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
