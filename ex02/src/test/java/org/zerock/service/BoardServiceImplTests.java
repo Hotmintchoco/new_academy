@@ -26,4 +26,35 @@ public class BoardServiceImplTests {
 		vo.setWriter("오다");
 		service.register(vo);
 	}
+	@Test
+	public void testModify() {
+		log.info("testModify----------------");
+		BoardVO vo = new BoardVO();
+		vo.setBno(7L);
+		vo.setTitle("오라클");
+		vo.setContent("오라클");
+		vo.setWriter("오라클");
+		log.info("update" + service.modify(vo));
+	}
+	@Test
+	public void testRemove() {
+		log.info("testRemove----------------");
+		BoardVO vo = new BoardVO();
+		vo.setBno(10L);
+		log.info("remove-" + service.remove(vo.getBno()));
+	}
+	@Test
+	public void testGet() {
+		log.info("testGet----------------");
+		BoardVO vo = new BoardVO();
+		vo.setBno(5L);
+		log.info("get" + service.get(vo.getBno()));
+	}
+	@Test
+	public void testGetList() {
+		log.info("testGet----------------");
+		for(BoardVO vo : service.getList()) {
+			log.info(vo);
+		}
+	}
 }

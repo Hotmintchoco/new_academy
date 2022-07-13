@@ -24,22 +24,28 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public int modify(BoardVO vo) {
-		return 0;
+		log.info("modify----------------------");
+		int count = mapper.update(vo);
+		return count;
 	}
 
 	@Override
 	public int remove(Long bno) {
-		return 0;
+		log.info("remove----------------------");
+		int count = mapper.delete(bno);
+		return count;
 	}
 
 	@Override
 	public BoardVO get(Long bno) {
-		return null;
+		log.info("get----------------------------");
+		return mapper.read(bno);
 	}
 
 	@Override
 	public List<BoardVO> getList() {
-		return null;
+		log.info("getList--------------------------");
+		return mapper.getList();
 	}
 
 }
