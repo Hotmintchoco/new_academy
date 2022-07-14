@@ -27,12 +27,6 @@
         #slider > img {margin-left: 250px;}
         .tm-mt-0 {float: left; font-size: 50px;}
         #menubar {width: 1000px; margin: 0 auto;}
-        @font-face {
-    	font-family: 'yg-jalnan';
-    	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    	font-weight: normal;
-    	font-style: normal;
-}
     </style> 
 </head>
 <body>
@@ -40,9 +34,9 @@
         <div>
             <nav>
                 <ul>
-                    <li><a href="#" class="font-face">회원가입</a></li>
+                    <li><a href="#">회원가입</a></li>
                     <li><a href="#">로그인</a></li>
-                    <li><a href="mypage.jsp" class="tm-mt-0 tm-mb-15"><span class="tm-color-primary">여행가기</span> <span class="tm-color-gray-2">좋은날</span></a></li>
+                    <li><a href="mypage.jsp" class="tm-mt-0 tm-mb-15"><span class="tm-color-primary">여행가기 좋은날</span></a></li>
                 </ul>
             </nav>
         </div>

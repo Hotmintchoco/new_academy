@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script language="javascript">
 function goPopup(){
-	var pop = window.open("jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("page.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
 
 
@@ -29,7 +29,6 @@ function jusoCallBack(roadFullAddr){
 			</tr>
 		</table>
 	</div>
-
 </form>
 </body>
 </html>
