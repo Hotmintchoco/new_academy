@@ -107,7 +107,7 @@
 
 
 				
-			<Context docBase="ex02_1" path="/" reloadable="true" source="org.eclipse.jst.jee.server:ex02_1"/></Host>
+			<Context docBase="ex02_1" path="/" reloadable="true" source="org.eclipse.jst.jee.server:ex02_1"/><Context docBase="homeBoard" path="/biz" reloadable="true" source="org.eclipse.jst.jee.server:homeBoard"/></Host>
 		</Engine>
 	</Service>
 </Server>

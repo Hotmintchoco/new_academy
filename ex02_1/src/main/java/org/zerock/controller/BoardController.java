@@ -3,6 +3,7 @@ package org.zerock.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -24,10 +25,12 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public void list(Criteria cri, Model model) {
-		log.info("list---------------------");
-		model.addAttribute("list", service.getList(cri));
+	public void list(@ModelAttribute("cri") Criteria cri, Model model) {
 		log.info("cri + " + cri);
+		int total = service.getTotal(cri);
+		log.info("total count : " + total);
+		
+		model.addAttribute("list", service.getList(cri));
 		model.addAttribute("pageMaker", new PageDTO(cri, 315));
 	}
 	
@@ -45,28 +48,31 @@ public class BoardController {
 	}
 	
 	@GetMapping({"/get", "/modify"})
-	public void get(Criteria cri, Long bno, Model model) {
+	public void get(@ModelAttribute("cri") Criteria cri, Long bno, Model model) {
 		log.info("----------- get or modify --------------------");
 		model.addAttribute("board", service.get(bno));
-		model.addAttribute("page", cri);
 	}
 	
 	@PostMapping("/remove")
-	public String remove(Long bno, RedirectAttributes rttr) {
+	public String remove(@ModelAttribute("cri") Criteria cri, Long bno, RedirectAttributes rttr) {
 		System.out.println(bno);
 		log.info("remove---------" + bno);
 		if(service.remove(bno)==1) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/modify")
-	public String modify(BoardVO vo, RedirectAttributes rttr) {
+	public String modify(@ModelAttribute("cri") Criteria cri, BoardVO vo, RedirectAttributes rttr) {
 		log.info("modify : " + vo);
 		if( service.modify(vo) == 1) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		rttr.addAttribute("pageNum", cri.getPageNum());
+		rttr.addAttribute("amount", cri.getAmount());
 		return "redirect:/board/list";
 	}
 		
