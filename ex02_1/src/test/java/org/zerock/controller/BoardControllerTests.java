@@ -44,7 +44,7 @@ public class BoardControllerTests {
 	public void testRegister() throws Exception {
 		String resultPage = 
 				mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
-				.param("title",	"금요일"	)
+				.param("title",	"금요일")
 				.param("content", "주말 이네........")
 				.param("writer", "한 잔 콜"))
 				.andReturn()

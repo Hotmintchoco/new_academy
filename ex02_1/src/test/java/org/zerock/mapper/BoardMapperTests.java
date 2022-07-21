@@ -86,17 +86,37 @@ public class BoardMapperTests {
 	}
 	
 	@Test
+	public void testSearchPaging() {
+		Criteria cri = new Criteria();
+		cri.setType("TCW");
+		cri.setKeyword("홍길동");
+		List<BoardVO> list = mapper.getListWithPagging(cri);
+		log.info(list);
+	}
+	
+	@Test
 	public void testSearch() {
 		Map<String, String>map = new HashMap<>();
 		map.put("T", "한호");
 		map.put("C", "도둑");
-		map.put("W", "");
+		map.put("W", "누구");
 		
 		Map<String, Map<String, String>> outer = new HashMap<>();
 		
 		outer.put("map", map);
 		List<BoardVO> list = mapper.searchTest(outer);
 		log.info(list);
+	}
+	
+	@Test
+	public void testTotal() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("한호");
+		
+		int count = mapper.getTotalCount(cri);
+		log.info("-------------------------------");
+		log.info(count);
 	}
 }
 
