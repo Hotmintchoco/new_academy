@@ -109,9 +109,10 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\work\tripProject"/>
+			<item value="C:\work\1데이터수집"/>
 			<item value="C:\work\ex02_1"/>
 			<item value="C:\work\JusoTest"/>
-			<item value="C:\work\tripProject"/>
 			<item value="C:\work\ex01"/>
 			<item value="C:\work\tripProject_team"/>
 			<item value="C:\work\bookShop01"/>
