@@ -30,6 +30,19 @@ CREATE TABLE festival (
    CONSTRAINT fk_user_to_festival foreign key(usernum) references users(usernum)
 );
 
+-- 페스티벌데이터(api 크롤링)
+create table festivaldata (
+    num number(5) not null primary key,
+    title varchar2(50),
+    address varchar2(100),
+    firstimg varchar2(500),
+    startdate varchar2(8),
+    enddate varchar2(8),
+    mapx varchar2(50),
+    mapy varchar2(50),
+    mlevel number(5)
+);
+
 CREATE TABLE board (
    board_num number NOT NULL primary key,
    board_title varchar2(50) NOT NULL,
@@ -90,6 +103,9 @@ create sequence users_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
 -- 축제 시퀀스
 create sequence festival_seq
+START with 1 INCREMENT by 1 MINVALUE 1;
+-- 축제 데이터 시퀀스
+create sequence fesdata_num
 START with 1 INCREMENT by 1 MINVALUE 1;
 -- 보드 시퀀스
 create sequence board_seq

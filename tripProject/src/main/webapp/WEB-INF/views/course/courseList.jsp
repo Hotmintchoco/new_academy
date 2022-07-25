@@ -7,11 +7,11 @@
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>코스추천</title>
-  <link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="css/magnific-popup.css"> 
-     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
+    <link rel="stylesheet" href="../css/magnific-popup.css"> 
+     <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/animate.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -28,7 +28,6 @@
 }
       
    * {font-family: 'yg-jalnan', cursive }
-
   .gd-container {
   max-width: 1100px;
   position: relative;
@@ -36,7 +35,6 @@
   padding-left: 15px;
   padding-right: 15px;
 }
-
  ul > li > a {color: #212121;}
  #slider {width: 1000px; height: 1000px; margin: 0 auto;}
      
@@ -44,7 +42,7 @@
      
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="../includes/header.jsp"></jsp:include>
 <a style="display:scroll;position:fixed;bottom:20px;z-index: 999;right:60px;font-size: 40px;" href="#" title="âtop">
 	<i class="fa-solid fa-circle-arrow-up"></i></a>
 	
@@ -60,6 +58,6 @@
         
     </div>
     
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>

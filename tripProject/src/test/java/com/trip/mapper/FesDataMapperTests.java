@@ -1,8 +1,5 @@
 package com.trip.mapper;
 
-import java.util.Iterator;
-
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,9 +24,8 @@ public class FesDataMapperTests {
 	@Test
 	public void testInsert() {
 		try {
-			int k=1;
 			Document doc = Jsoup.connect("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival"
-					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=100&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
+					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=150&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
 			Elements all = doc.select("item");
 			Elements el = doc.getElementsByAttribute("firstimage");
 			
@@ -50,7 +46,7 @@ public class FesDataMapperTests {
 			Elements elmapY = all.select("mapy");
 			Elements elmLevel = all.select("mlevel");
 			
-			for(int i=0; i<10; i++) {
+			for(int i=0; i<100; i++) {
 				
 				String htmlTmp = all.get(i).html();
 				if (!(htmlTmp.contains("firstimage"))) {

@@ -114,7 +114,9 @@
  
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="includes/header.jsp"></jsp:include>
+<a style="display:scroll;position:fixed;bottom:20px;z-index: 999;right:60px;font-size: 40px;" href="#" title="âtop">
+	<i class="fa-solid fa-circle-arrow-up"></i></a>
 	<div class="card">
    
 	</div>
@@ -122,10 +124,10 @@
 <div id="slider">
 	
 		<!-- 여기에 내용 넣으세요 -->
-		<h3>여행지 추천 글 쓰기</h3>
+		<h3>축제 글 쓰기</h3>
 		<br>
 
-		<form method="post" action="destination.jsp">
+		<form method="post" action="festival.jsp">
 			<table border=1 width="100%">
 				<tr>
 					<td align="center">제목</td>
@@ -137,10 +139,11 @@
 				</tr>
 			</table>
 			<input type="submit" value="등록">
+		
 		</form>
 
 </div>
 
-<jsp:include page="footer.jsp"></jsp:include>
+<jsp:include page="includes/footer.jsp"></jsp:include>
 </body>
 </html>

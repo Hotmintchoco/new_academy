@@ -44,7 +44,7 @@
   
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="includes/header.jsp"></jsp:include>
 <div class="card">
    
 	</div>
@@ -55,6 +55,6 @@
         
 </div>
 
-<jsp:include page="footer.jsp"></jsp:include>    
+<jsp:include page="includes/footer.jsp"></jsp:include>    
 </body>
 </html>

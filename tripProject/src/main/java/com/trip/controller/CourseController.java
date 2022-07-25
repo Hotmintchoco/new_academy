@@ -12,14 +12,13 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @AllArgsConstructor
-@RequestMapping("/users/*")
-public class UserController {
+@RequestMapping("/course/*")
+public class CourseController {
 	private UserMapper mapper;
 	
-	@RequestMapping("list.do")
-	public void list(Model model) {
-		log.info("list");
-		model.addAttribute("list", mapper.getList());
+	@RequestMapping("page.do")
+	public String list(Model model) {
+		return "course/coursePage";
 	}
 	
 }

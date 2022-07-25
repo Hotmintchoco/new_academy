@@ -55,7 +55,7 @@
 				</table>
 				
 				<!-- 검색 조건 Start -->
-					<form id="searchForm" action="/board/list" method="get">
+					<form id="searchForm" action="/board/list"o method="get">
 						<select name='type'>
 							<option value="" <c:out value="${pageMaker.cri.type==null ? 'selected' : ''}"/>></option>
 							<option value="T" <c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : ''}"/>>제목</option>
