@@ -7,7 +7,7 @@
 	<insert id="insert">
 		insert into destinatinodata(num, title, address, firstimg, secondimg, mapx, mapy)
 		values(desdata_seq.nextval,
-		#{title}, #{address}, #{firstimg}, #{secondimg}, #{mapx}, #{mapy})
+		#{title}, #{address}, #{firstImg}, #{secondImg}, #{mapX}, #{mapY})
 	</insert>
 
 </mapper>
