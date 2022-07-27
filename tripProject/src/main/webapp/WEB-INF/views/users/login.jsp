@@ -186,7 +186,6 @@ html, body {
 				</div>
 				<div class="submit">
 					<input type="submit" value="로그인" onclick="return loginCheck()">
-					<input type="hidden" id="loginMessage" value="${message}">
 				</div>
 				<jsp:include page="userFooter.jsp"></jsp:include>
 			</div>
