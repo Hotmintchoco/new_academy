@@ -28,7 +28,6 @@
 }
       
    * {font-family: 'yg-jalnan', cursive }
-
   .gd-container {
   max-width: 1100px;
   position: relative;
@@ -36,7 +35,6 @@
   padding-left: 15px;
   padding-right: 15px;
 }
-
  ul > li > a {color: #212121;}
  #slider {width: 1000px; height: 1000px; margin: 0 auto;}
      

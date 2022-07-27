@@ -107,7 +107,7 @@
 
 
 				
-			<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\tripProject" path="/app" reloadable="true" source="org.eclipse.jst.jee.server:tripProject"/><Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ex02_1" path="" reloadable="true" source="org.eclipse.jst.jee.server:ex02_1"/></Host>
+			<Context docBase="C:\work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\tripProject" path="" reloadable="true" source="org.eclipse.jst.jee.server:tripProject"/></Host>
 		</Engine>
 	</Service>
 </Server>

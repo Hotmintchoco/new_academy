@@ -35,7 +35,7 @@
 .carousel-inner{
    // height: 300px;
 }
-
+p {color : #212121;}
 .item, img{
     height: 500px; !important;
     width:  100% !important;
@@ -161,8 +161,7 @@
                   </figure>
                   <div class="fh5co-text">
                      <h2>경기도</h2>
-                     <p>하루만에 즐기는
-                        수원 당일치기 여행코스</p>
+                     <p>하루만에 즐기는 수원 당일치기 여행코스</p>
                      <p><span class="btn btn-primary">보러가기</span></p>
                   </div>
                </a>

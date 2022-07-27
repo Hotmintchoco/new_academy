@@ -9,4 +9,10 @@
 		select * from users where usernum>0
 	</select>
 	
+	<!-- 로그인 회원정보 확인 -->
+	<select id="read" resultType="com.trip.domain.UserVO">
+      select * from users where userid =
+      #{userId} and userpass= #{userPass}
+   </select>
+	
 </mapper>

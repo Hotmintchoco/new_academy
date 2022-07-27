@@ -7,8 +7,7 @@ import com.trip.domain.UserVO;
 public interface UserMapper {
 	public List<UserVO> getList();
 	public void insert(UserVO vo);
-	public void insertSelectKey(UserVO vo);
-	public UserVO read(int bno);
-	public int delete(int bno);
+	public UserVO read(UserVO vo);
+	public int delete(int userNum);
 	public int update(UserVO vo);
 }

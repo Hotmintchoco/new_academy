@@ -1,8 +1,5 @@
 package com.trip.mapper;
 
-import java.util.Iterator;
-
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,9 +24,8 @@ public class FesDataMapperTests {
 	@Test
 	public void testInsert() {
 		try {
-			int k=1;
 			Document doc = Jsoup.connect("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival"
-					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=100&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
+					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=150&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
 			Elements all = doc.select("item");
 			Elements el = doc.getElementsByAttribute("firstimage");
 			
@@ -41,45 +37,63 @@ public class FesDataMapperTests {
 //					System.out.println(title);
 //					}
 //				} 
-			Elements title = all.select("title");
-			Elements address = all.select("addr1");
-			Elements startDate = all.select("eventstartdate");
-			Elements endDate = all.select("eventenddate");
-			Elements firstImg = all.select("firstimage");
-			Elements mapX = all.select("mapx");
-			Elements mapY = all.select("mapy");
-			Elements mLevel = all.select("mlevel");
+			Elements eltitle = all.select("title");
+			Elements eladdress = all.select("addr1");
+			Elements elstartDate = all.select("eventstartdate");
+			Elements elendDate = all.select("eventenddate");
+			Elements elfirstImg = all.select("firstimage");
+			Elements elmapX = all.select("mapx");
+			Elements elmapY = all.select("mapy");
+			Elements elmLevel = all.select("mlevel");
 			
-			for(int i=0; i<10; i++) {
+			for(int i=0; i<100; i++) {
 				
-				String imgTmp = all.get(i).html();
-				if (!(imgTmp.contains("firstimage"))) {
+				String htmlTmp = all.get(i).html();
+				if (!(htmlTmp.contains("firstimage"))) {
 					Element elImg = new Element("firstimage");
-					firstImg.add(i, elImg);
+					elfirstImg.add(i, elImg);
 					System.out.println("noimage");
 				}
+				if (!(htmlTmp.contains("mlevel"))) {
+					Element ellevel = new Element("mlevel");
+					elmLevel.add(i, ellevel);
+					System.out.println("nolevel");
+				}
+				String title = eltitle.get(i).text();
+				String address = eladdress.get(i).text();
+				String startDate = elstartDate.get(i).text();
+				String endDate = elendDate.get(i).text();
+				String firstImg = elfirstImg.get(i).text();
+				String mapX = elmapX.get(i).text();
+				String mapY = elmapY.get(i).text();
+				String mLevel = elmLevel.get(i).text();
+				
 				
 				
 				System.out.println("번호 : " + (i+1));
 				FesDataDTO dto = new FesDataDTO();
-				dto.setTitle(title.get(i).text());
-				dto.setAddress(address.get(i).text());
-				dto.setStartDate(startDate.get(i).text());
-				dto.setEndDate(endDate.get(i).text());
-				dto.setFirstImg(firstImg.get(i).text());
-				dto.setMapX(mapX.get(i).text());
-				dto.setMapY(mapY.get(i).text());
+				dto.setTitle(title);
+				dto.setAddress(address);
+				dto.setStartdate(startDate);
+				dto.setEnddate(endDate);
+				dto.setFirstimg(firstImg);
+				dto.setMapx(mapX);
+				dto.setMapy(mapY);
+				if(elmLevel.get(i).text().length() > 0) {
+					dto.setMlevel(Integer.parseInt(mLevel));
+				}
 				
 				
 				System.out.println(dto.getTitle());
 				System.out.println(dto.getAddress());
-				System.out.println(dto.getStartDate());
-				System.out.println(dto.getEndDate());
-				System.out.println(dto.getFirstImg());
-				System.out.println(dto.getMapX());
-				System.out.println(dto.getMapY());
-			}
-			System.out.println();
+				System.out.println(dto.getStartdate());
+				System.out.println(dto.getEnddate());
+				System.out.println(dto.getFirstimg());
+				System.out.println(dto.getMapx());
+				System.out.println(dto.getMapy());
+				System.out.println(dto.getMlevel());
+				mapper.insert(dto);
+			}		
 					
 			
 		}catch (Exception e) {
