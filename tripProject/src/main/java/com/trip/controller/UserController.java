@@ -43,6 +43,33 @@ public class UserController {
 		return "users/login";
 	}
 	
+	@GetMapping("join.do")
+	public String joinView() {
+		log.info("-------join Page---------");
+		return "users/join";
+	}
+	
+	@PostMapping("join.do")
+	public String join(Model model, UserVO vo) {
+		log.info("-------join---------");
+		log.info(vo.getUserId());
+		log.info(vo.getUserName());
+		log.info(vo.getUserPass());
+		log.info(vo.getBirth());
+		
+		String birth = vo.getBirth();
+		birth = birth.replace(",", "");
+		if(birth.length() < 8) {
+			birth = birth.substring(0, 6) + 0 + birth.substring(6);
+			vo.setBirth(birth);
+		}
+		log.info(vo.getBirth());
+		log.info(vo.getEmail());
+		mapper.insert(vo);
+		log.info("-------- user insert ------------");
+		return "redirect:/users/login.do";
+	}
+	
 	@GetMapping("idFind.do")
 	public String idFindView(Model model) {
 		log.info("-------idFind Page---------");
@@ -55,11 +82,6 @@ public class UserController {
 		return "users/pwFind";
 	}
 	
-	@GetMapping("join.do")
-	public String joinView(Model model) {
-		log.info("-------join Page---------");
-		return "users/join";
-	}
 	
 	@RequestMapping("list.do")
 	public void list(Model model) {
