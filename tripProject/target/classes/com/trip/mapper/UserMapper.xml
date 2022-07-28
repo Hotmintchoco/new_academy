@@ -27,4 +27,9 @@
 		#{question}, #{answer})
 	</insert>
 	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+		delete from users where usernum=#{userNum}
+	</delete>
+	
 </mapper>

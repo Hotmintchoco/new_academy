@@ -43,6 +43,8 @@
 	section {width: 1000px; height: 750px; background-color: #D5D5D5; margin:0 auto;}
 	section > h1 {text-align: center; line-height: 100px;}
 	table, th, td  { border:1px solid #666; text-align: center;}
+	
+	#buttons {margin-left : 450px; margin-top: 25px;}
 </style>
      
 </head>
@@ -103,9 +105,28 @@
 									value="${user.joinDate}"/></td>
 				</tr>
 			</table>
+			<div id="buttons">
+				<button data-oper='modify' class="btn btn-default">수정</button>
+	            <button data-oper='remove' class="btn btn-info">삭제</button>
+			</div>
 		</section>
-
+		
+		<form id="operForm" action="../board/modify.do" method="post">
+            <input type="hidden" name="userNum" value='<c:out value="${user.userNum}"/>'>
+        </form>
 	</div>
+
+<script>
+	var operForm = $("#operForm");
 	
+	$("button[data-oper='modify']").on("click", function(e){
+		operForm.attr("action", "../users/modify.do").submit();
+	});
+	
+	$("button[data-oper='remove']").on("click", function(e){
+		operForm.attr("action", "../users/withdraw.do");
+		operForm.submit();
+	});
+</script>	
 </body>
 </html>

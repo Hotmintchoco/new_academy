@@ -86,4 +86,13 @@ public class UserController {
 		log.info("-------- mypage -----------");
 		return "users/mypage";
 	}
+	
+	@PostMapping("withdraw.do")
+	public String withdraw(UserVO vo, HttpSession session) {
+		log.info("------ remove ------");
+		log.info(vo.getUserNum());
+		mapper.delete(vo.getUserNum());
+		session.invalidate();
+		return "redirect:/home.do";
+	}
 }
