@@ -30,9 +30,6 @@ public class UserController {
 	@PostMapping("login.do")
 	public String login(Model model, UserVO vo, HttpSession session) {
 		log.info("-------login 실행---------");
-		log.info(vo.getAdmin());
-		log.info(vo.getUserId());
-		log.info(vo.getUserPass());
 		UserVO user = mapper.read(vo);
 		log.info(user);
 		if (user != null) {
@@ -52,10 +49,7 @@ public class UserController {
 	@PostMapping("join.do")
 	public String join(Model model, UserVO vo) {
 		log.info("-------join---------");
-		log.info(vo.getUserId());
 		log.info(vo.getUserName());
-		log.info(vo.getUserPass());
-		log.info(vo.getBirth());
 		
 		String birth = vo.getBirth();
 		birth = birth.replace(",", "");
@@ -63,8 +57,6 @@ public class UserController {
 			birth = birth.substring(0, 6) + 0 + birth.substring(6);
 			vo.setBirth(birth);
 		}
-		log.info(vo.getBirth());
-		log.info(vo.getEmail());
 		mapper.insert(vo);
 		log.info("-------- user insert ------------");
 		return "redirect:/users/login.do";
@@ -87,5 +79,11 @@ public class UserController {
 	public void list(Model model) {
 		log.info("list");
 		model.addAttribute("list", mapper.getList());
+	}
+	
+	@RequestMapping("mypage.do")
+	public String mypage(Model model) {
+		log.info("-------- mypage -----------");
+		return "users/mypage";
 	}
 }
