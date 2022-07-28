@@ -95,4 +95,9 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/home.do";
 	}
+	@PostMapping("modify.do")
+	public String modify(UserVO vo) {
+		log.info("------ modify ------");
+		return "users/modify";
+	}
 }

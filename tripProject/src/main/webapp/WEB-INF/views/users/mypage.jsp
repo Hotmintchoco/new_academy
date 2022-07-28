@@ -42,7 +42,8 @@
 	table {width:800px; margin:10px auto 0;}
 	section {width: 1000px; height: 750px; background-color: #D5D5D5; margin:0 auto;}
 	section > h1 {text-align: center; line-height: 100px;}
-	table, th, td  { border:1px solid #666; text-align: center;}
+	table, th, td  { border:1px solid #666; }
+	th, td { height: 50px; text-align: center; }
 	
 	#buttons {margin-left : 450px; margin-top: 25px;}
 </style>
@@ -64,43 +65,43 @@
 			<h1>내 정보 조회</h1>
 			<table>
 				<tr>
-					<th>아이디</th>
+					<td>아이디</td>
 					<td><c:out value="${user.userId}"></c:out></td>
 				</tr>
 				<tr>
-					<th>이름</th>
+					<td>이름</td>
 					<td>${user.userName}</td>
 				</tr>
 				<tr>
-					<th>별명</th>
+					<td>별명</td>
 					<td>${user.nickName}</td>
 				</tr>
 				<tr>
-					<th>비밀번호</th>
+					<td>비밀번호</td>
 					<td>${user.userPass}</td>
 				</tr>
 				<tr>
-					<th>성별</th>
+					<td>성별</td>
 					<td>${user.gender}</td>
 				</tr>
 				<tr>
-					<th>전화번호</th>
+					<td>전화번호</td>
 					<td>${user.phone}</td>
 				</tr>
 				<tr>
-					<th>생년월일</th>
+					<td>생년월일</td>
 					<td>${user.birth}</td>
 				</tr>
 				<tr>
-					<th>이메일</th>
+					<td>이메일</td>
 					<td>${user.email}</td>
 				</tr>
 				<tr>
-					<th>회원 등급</th>
+					<td>회원 등급</td>
 					<td>${user.admin}</td>
 				</tr>
 				<tr>
-					<th>가입 일자</th>
+					<td>가입 일자</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 									value="${user.joinDate}"/></td>
 				</tr>
