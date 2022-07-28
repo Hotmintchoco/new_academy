@@ -8,6 +8,7 @@ public interface UserMapper {
 	public List<UserVO> getList();
 	public void insert(UserVO vo);
 	public UserVO read(UserVO vo);
+	public UserVO read(int userNum);
 	public int delete(int userNum);
 	public int update(UserVO vo);
 }

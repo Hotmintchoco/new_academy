@@ -50,13 +50,16 @@ public class UserController {
 	public String join(Model model, UserVO vo) {
 		log.info("-------join---------");
 		log.info(vo.getUserName());
-		
 		String birth = vo.getBirth();
+		log.info(birth);
 		birth = birth.replace(",", "");
+		log.info(birth);
 		if(birth.length() < 8) {
 			birth = birth.substring(0, 6) + 0 + birth.substring(6);
+			log.info(birth);
 			vo.setBirth(birth);
 		}
+		vo.setBirth(birth);
 		mapper.insert(vo);
 		log.info("-------- user insert ------------");
 		return "redirect:/users/login.do";
@@ -87,7 +90,7 @@ public class UserController {
 		return "users/mypage";
 	}
 	
-	@PostMapping("withdraw.do")
+	@GetMapping("withdraw.do")
 	public String withdraw(UserVO vo, HttpSession session) {
 		log.info("------ remove ------");
 		log.info(vo.getUserNum());
@@ -95,9 +98,17 @@ public class UserController {
 		session.invalidate();
 		return "redirect:/home.do";
 	}
+	@GetMapping("modify.do")
+	public String modifyPage() {
+		log.info("------ modifyPage ------");
+		return "users/modify";
+	}
+	
 	@PostMapping("modify.do")
 	public String modify(UserVO vo) {
 		log.info("------ modify ------");
-		return "users/modify";
+		log.info(vo);
+		mapper.update(vo);
+		return "users/mypage";
 	}
 }

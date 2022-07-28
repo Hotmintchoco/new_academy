@@ -15,6 +15,11 @@
 		select * from users where userid =
 		#{userId} and userpass= #{userPass}
 	</select>
+	
+	<!-- 회원정보 확인 -->
+	<select id="read" resultType="com.trip.domain.UserVO">
+		select * from users where usernum = #{userNum}
+	</select>
    
    <!-- 회원 추가 -->
 	<insert id="insert">
@@ -31,5 +36,15 @@
 	<delete id="delete">
 		delete from users where usernum=#{userNum}
 	</delete>
+
+	<!-- 회원 정보 수정 -->
+	<update id="update">
+		update users
+		set nickname=#{nickName},
+		userpass =#{userPass},
+		phone = #{phone},
+		email = #{email}
+		where usernum = #{userNum}
+	</update>
 	
 </mapper>

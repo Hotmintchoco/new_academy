@@ -109,6 +109,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\work\HRD_01"/>
 			<item value="C:\work\tripProject"/>
 			<item value="C:\work\testPjt"/>
 			<item value="C:\work\1데이터수집"/>
@@ -121,6 +122,7 @@
 			<item value="C:\Users\172\Downloads\Jsp-Servlet-study-master\web-project"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\work\ex02_1\src\main\webapp\WEB-INF\views\includes\header.jsp"/>
 			<item value=""/>
 		</list>
 	</section>

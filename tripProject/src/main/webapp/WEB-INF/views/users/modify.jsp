@@ -63,56 +63,54 @@
 	<div id="slider">
 		<section>
 			<h1>내 정보 조회</h1>
-			<table>
-				<tr>
-					<td>아이디</td>
-					<td><c:out value="${user.userId}"></c:out></td>
-				</tr>
-				<tr>
-					<td>이름</td>
-					<td>${user.userName}</td>
-				</tr>
-				<tr>
-					<td>별명</td>
-					<td>${user.nickName}</td>
-				</tr>
-				<tr>
-					<td>비밀번호</td>
-					<td>${user.userPass}</td>
-				</tr>
-				<tr>
-					<td>성별</td>
-					<td>${user.gender}</td>
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>${user.phone}</td>
-				</tr>
-				<tr>
-					<td>생년월일</td>
-					<td>${user.birth}</td>
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td>${user.email}</td>
-				</tr>
-				<tr>
-					<td>회원 등급</td>
-					<td>${user.admin}</td>
-				</tr>
-				<tr>
-					<td>가입 일자</td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${user.joinDate}"/></td>
-				</tr>
-			</table>
-			<div id="buttons">
-				<button data-oper='modify' class="btn btn-default">수정</button>
-	            <button data-oper='remove' class="btn btn-info">탈퇴</button>
-			</div>
+			<form id="operForm" action="../board/modify.do" method="post">
+				<table>
+					<tr>
+						<td>아이디</td>
+						<td><c:out value="${user.userId}"></c:out></td>
+					</tr>
+					<tr>
+						<td>이름</td>
+						<td><input value="${user.userName}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>별명</td>
+						<td><input value="${user.nickName}" name="nickName"></td>
+					</tr>
+					<tr>
+						<td>비밀번호</td>
+						<td><input value="${user.userPass}" name="userPass"></td>
+					</tr>
+					<tr>
+						<td>성별</td>
+						<td><input value="${user.gender}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>전화번호</td>
+						<td><input value="${user.phone}" name="phone"></td>
+					</tr>
+					<tr>
+						<td>생년월일</td>
+						<td><input value="${user.birth}" readonly="readonly"></td>
+					</tr>
+					<tr>
+						<td>이메일</td>
+						<td><input value="${user.email}" name="email"></td>
+					</tr>
+					<tr>
+						<td>가입 일자</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${user.joinDate}"/>
+							<input type="hidden" name="userNum" value="${user.userNum}">
+						</td>
+					</tr>
+				</table>
+				<div id="buttons">
+					<button data-oper='modify' class="btn btn-default">수정</button>
+				</div>
+			</form>
 		</section>
 		
-		<form id="operForm" action="../board/modify.do" method="get"></form>
 	</div>
 
 <script>
@@ -120,11 +118,6 @@
 	
 	$("button[data-oper='modify']").on("click", function(e){
 		operForm.attr("action", "../users/modify.do").submit();
-	});
-	
-	$("button[data-oper='remove']").on("click", function(e){
-		operForm.attr("action", "../users/withdraw.do");
-		operForm.submit();
 	});
 </script>	
 </body>
