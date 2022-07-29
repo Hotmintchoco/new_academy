@@ -2,7 +2,6 @@ package com.trip.mapper;
 
 import java.util.Iterator;
 
-import org.apache.jasper.tagplugins.jstl.core.If;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

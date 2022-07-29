@@ -19,9 +19,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <!-- 서머노트링크 -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.css" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-lite.js"></script>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <!-- /서머노트링크 -->
 <style>
 @font-face {
@@ -32,21 +37,17 @@
    font-weight: normal;
    font-style: normal;
 }
-
 @import url("https://fonts.googleapis.com/css?family=Inconsolata:700");
-
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    font-family: 'yg-jalnan', cursive
 }
-
 html, body {
    width: 100%;
    height: 100%;
 }
-
 .head_container {
    position: absolute;
    margin: auto;
@@ -57,7 +58,6 @@ html, body {
    width: 200px;
    height: 100px;
 }
-
 .head_container .search {
    position: absolute;
    margin: auto;
@@ -72,11 +72,9 @@ html, body {
    transition: all 0.5s;
    z-index: 4;
 }
-
 .head_container .search:hover {
    cursor: pointer;
 }
-
 .head_container .search::before {
    content: "";
    position: absolute;
@@ -91,7 +89,6 @@ html, body {
    transform: rotate(45deg);
    transition: all 0.5s;
 }
-
 .head_container .search::after {
    content: "";
    position: absolute;
@@ -106,7 +103,6 @@ html, body {
    border: 2px solid white;
    transition: all 0.5s;
 }
-
 .head_container input {
    position: absolute;
    margin: auto;
@@ -128,29 +124,24 @@ html, body {
    font-weight: bolder;
    letter-spacing: 0.1em;
 }
-
 .head_container input:hover {
    cursor: pointer;
 }
-
 .head_container input:focus {
    width: 200px;
    opacity: 1;
    cursor: text;
 }
-
 .head_container input:focus ~ .search {
    right: -150px;
    background: #98a6c3;
    z-index: 6;
 }
-
 .head_container input:focus ~ .search::before {
    top: 0;
    left: 0;
    width: 25px;
 }
-
 .head_container input:focus ~ .search::after {
    top: 0;
    left: 0;
@@ -161,17 +152,14 @@ html, body {
    border-radius: 0%;
    transform: rotate(-45deg);
 }
-
 .head_container input::placeholder {
    color: white;
    opacity: 0.5;
    font-weight: bolder;
 }
-
 .btn-group .btn {
 	margin-top: 10px; border-radius: 5em;
 }
-
 </style>
 <title>Insert title here</title>
 </head>
@@ -193,7 +181,7 @@ html, body {
          <li><a href="../destination/list.do">여행지 추천</a></li>
          <li><a href="../course/page.do">코스 추천</a></li>
          <li><a href="../festival/page.do">축제</a></li>
-         <li><a href="board.jsp">자유게시판</a></li>
+         <li><a href="../board/page.do">자유게시판</a></li>
          <c:choose>
 			<c:when test="${user == null}">
        			<li><a href="../users/login.do">로그인</a></li>

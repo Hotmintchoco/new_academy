@@ -3,8 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trip.mapper.DestinationMapper">
-<!--    <select id="getList" resultType="org.zerock.domain.BoardVO">
+
+	<select id="getList" resultType="com.trip.domain.DestinationVO">
 		select * from destination where
 		destination_num>0
-	</select>-->
+	</select>
+
+	<insert id="insert">
+		insert into destination(destination_num, destination_title, destination_image, destination_content, destination_city, usernum)
+		values(destination_seq.nextval, #{destination_title}, #{destination_image},
+		{destination_content}, #{destination_city}, #{usernum});
+	</insert>
 </mapper>

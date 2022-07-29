@@ -9,12 +9,12 @@ CREATE TABLE users (
    username varchar2(20) NOT NULL,
    nickname varchar2(20) NOT NULL UNIQUE,
    userpass varchar2(16) NOT NULL,
-   phone char(13) NOT NULL,  / 010-1234-5678 í˜•ì‹
+   phone char(13) NOT NULL,  / 010-1234-5678 Çü½Ä
    birth char(8) NOT NULL,
-   gender varchar2(8) NOT NULL, / male - ë‚¨ì„±, female - ì—¬ì„±
+   gender varchar2(8) NOT NULL, / male - ³²¼º, female - ¿©¼º
    joindate date default sysdate,
    email varchar2(50) NOT NULL,
-   admin number(1) NOT NULL, / 0 - ê´€ë¦¬ì, 1 - ì¼ë°˜íšŒì›
+   admin number(1) NOT NULL, / 0 - °ü¸®ÀÚ, 1 - ÀÏ¹İÈ¸¿ø
    question varchar2(50) NULL,
    answer varchar2(30) NULL
 );
@@ -26,12 +26,12 @@ CREATE TABLE festival (
    festival_image varchar2(4000) NULL,
    festival_schedule varchar2(30) NULL,
    festival_city varchar2(10) not null,
-   --fk ï¿½ß°ï¿½
+   --fk Ãß°¡
    usernum number not null,
    CONSTRAINT fk_user_to_festival foreign key(usernum) references users(usernum)
 );
 
--- ï¿½ä½ºÆ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(api)
+-- Æä½ºÆ¼¹ú µ¥ÀÌÅÍ(api)
 create table festivaldata (
     num number(5) not null primary key,
     title varchar2(100),
@@ -52,7 +52,7 @@ CREATE TABLE board (
    hits number NOT NULL,
    board_image varchar2(4000) NULL,
    board_like number not null,
-   --fk ï¿½ß°ï¿½
+   --fk Ãß°¡
    usernum number not null,
    CONSTRAINT fk_user_to_board foreign key(usernum) references users(usernum)
 );
@@ -61,7 +61,7 @@ CREATE TABLE board_comment (
    board_comm_num number NOT NULL primary key,
    board_comm_date date default sysdate,
    board_comm_reply varchar2(1000) NOT NULL,
-   --fk ï¿½ß°ï¿½
+   --fk Ãß°¡
    board_num number not null,
    CONSTRAINT fk_board_to_comment foreign key(board_num) references board(board_num)
 );
@@ -72,12 +72,12 @@ create table destination (
     destination_date date default sysdate,
     destination_image varchar2(4000),
     destination_content varchar2(4000) not null,
-    --fk ï¿½ß°ï¿½
+    --fk Ãß°¡
     usernum number not null,
     CONSTRAINT fk_user_to_destination foreign key(usernum) references users(usernum)
 );
 
--- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (api)
+-- ¿©ÇàÁö µ¥ÀÌÅÍ (api)
 create table destinatinodata (
     num number(10) not null primary key,
     title varchar2(150),
@@ -92,7 +92,7 @@ create table des_comment (
     des_comm_num number not null,
     des_comm_date date default sysdate,
     des_comm_reply varchar2(1000),
-    --fk ï¿½ß°ï¿½
+    --fk Ãß°¡
     destination_num number not null,
     CONSTRAINT fk_destination_to_des_comment foreign key(destination_num) references destination(destination_num)
 );
@@ -105,36 +105,36 @@ CREATE TABLE course (
    course_image varchar2(4000) NULL,
    course_like number NOT NULL,
    course_city varchar2(10) not null,
-   --fk ï¿½ß°ï¿½
+   --fk Ãß°¡
    destination_num number not null,
     CONSTRAINT fk_destination_to_course foreign key(destination_num) references destination(destination_num)
 );
 
--- È¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- È¸¿ø¸ñ·Ï ½ÃÄö½º
 create sequence users_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ÃàÁ¦ ½ÃÄö½º
 create sequence festival_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ÃàÁ¦ µ¥ÀÌÅÍ ½ÃÄö½º
 create sequence fesdata_num
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- º¸µå ½ÃÄö½º
 create sequence board_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- º¸µå ´ñ±Û ½ÃÄö½º
 create sequence board_comment_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ¿©ÇàÁö ½ÃÄö½º
 create sequence destination_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ¿©ÇàÁö µ¥ÀÌÅÍ ½ÃÄö½º
 create SEQUENCE desdata_seq 
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ¿©ÇàÁö ´ñ±Û ½ÃÄö½º
 create sequence des_comment_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
--- ï¿½Ú½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+-- ÄÚ½º ½ÃÄö½º
 create sequence course_seq
 START with 1 INCREMENT by 1 MINVALUE 1;
 

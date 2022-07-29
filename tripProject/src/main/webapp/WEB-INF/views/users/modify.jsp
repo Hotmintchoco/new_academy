@@ -38,7 +38,6 @@
 }
  ul > li > a {color: #212121;}
  #slider {width: 1000px; height: 1000px; margin: 0 auto;}
-
 	table {width:800px; margin:10px auto 0;}
 	section {width: 1000px; height: 750px; background-color: #D5D5D5; margin:0 auto;}
 	section > h1 {text-align: center; line-height: 100px;}

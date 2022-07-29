@@ -17,8 +17,18 @@
 	</select>
 	
 	<!-- 회원정보 확인 -->
-	<select id="read" resultType="com.trip.domain.UserVO">
+	<select id="get" resultType="com.trip.domain.UserVO">
 		select * from users where usernum = #{userNum}
+	</select>
+	
+	<!-- 회원 중복용 아이디 확인 -->
+	<select id="getNickName" resultType="com.trip.domain.UserVO">
+		select * from users where nickname = #{nickName}
+	</select>
+	
+	<!-- 회원 중복용 닉네임 확인 -->
+	<select id="getId" resultType="com.trip.domain.UserVO">
+		select * from users where userid = #{userId}
 	</select>
    
    <!-- 회원 추가 -->

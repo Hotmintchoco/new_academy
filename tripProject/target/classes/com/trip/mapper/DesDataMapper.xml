@@ -4,10 +4,52 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trip.mapper.DesDataMapper">
 
+	<select id="getList" resultType="com.trip.domain.DesDataDTO">
+		select * from destinatinodata where num>0
+	</select>
+
 	<insert id="insert">
-		insert into destinatinodata(num, title, address, firstimg, secondimg, mapx, mapy)
-		values(desdata_seq.nextval,
+		insert into destinatinodata(num, title, content, address, firstimg, secondimg, mapx, mapy)
+		values(desdata_seq.nextval, #{content},
 		#{title}, #{address}, #{firstImg}, #{secondImg}, #{mapX}, #{mapY})
+	</insert>
+	
+   <select id="read" resultType="com.trip.domain.DesDataDTO">
+      select * from destinatinodata
+      where num=#{num}
+   </select>
+	
+	
+		<select id="getListWithPagging"
+		resultType="com.trip.domain.DesDataDTO">
+		<![CDATA[
+			select num, title, content, firstImg
+		from(
+			select rownum rn, num, title, content, firstImg
+			from destinatinodata
+		where	
+		]]>
+		<![CDATA[
+		ROWNUM <= #{pageNum}*#{amount})
+		where
+		rn > (#{pageNum}-1)*#{amount}
+		]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from destinatinodata where
+		num > 0
+	</select>
+	
+		<insert id="insertSelectKey">
+
+		<selectKey keyProperty="num" order="BEFORE"	resultType="int">
+			select seq_board.nextval from dual
+		</selectKey>
+
+		insert into destinatinodata(num, title, content, img)
+		values(#{bno},
+		#{title}, #{content}, #{writer})
 	</insert>
 
 </mapper>

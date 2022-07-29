@@ -16,4 +16,39 @@
 		#{title}, #{address}, #{firstimg}, #{startdate}, #{enddate}, #{mapx}, #{mapy}, #{mlevel})
 	</insert>
 	
+	<select id="selectOne" parameterType="Integer" resultType="com.trip.domain.FesDataDTO">
+		select * from festivaldata where num=#{num}
+	</select>
+	
+	<select id="festivalList" resultType="com.trip.domain.FesDataDTO">
+		select * from festivaldata
+		where #{title} 
+		order by num desc
+	</select>
+	
+	  <select id="getListWithPagging" resultType="com.trip.domain.FesDataDTO">
+      <![CDATA[
+         select num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+      from(
+         select
+         rownum rn, num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+         from festivaldata
+         where ROWNUM <= #{pageNum}*#{amount}
+      )
+      where
+      ]]>
+      
+      
+      <![CDATA[
+      rn > (#{pageNum}-1)*#{amount}
+      ]]>
+   </select>
+   
+   <select id="getTotalCount" resultType="int">
+      select count(*) from festivaldata where 
+         
+     num>0
+   </select>
+	
+	
 </mapper>

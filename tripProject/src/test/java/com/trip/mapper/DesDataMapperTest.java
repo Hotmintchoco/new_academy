@@ -27,7 +27,7 @@ public class DesDataMapperTest {
 	public void testInsert() throws IOException {
         try {
 			Document doc = Jsoup.connect("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList"
-					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&pageNo=1&numOfRows=250&MobileApp=AppTest&MobileOS=ETC&arrange=A&cat1=&contentTypeId=12&listYN=Y").get();
+					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&pageNo=1&numOfRows=250&MobileApp=AppTest&MobileOS=ETC&arrange=B&cat1=&contentTypeId=12&listYN=Y").get();
 			Elements all = doc.select("item");
 			Elements el = doc.getElementsByAttribute("firstimage");
 			

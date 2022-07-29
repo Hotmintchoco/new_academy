@@ -41,6 +41,10 @@ html, body {
 	height: 100%;
 }
 
+ul>li>a {
+	color: #212121;
+}
+
 .gd-container {
 	max-width: 1100px;
 	position: relative;
@@ -110,8 +114,6 @@ html, body {
 	font-size: 2em;
 	margin-bottom: 50px;
 }
-
-
 
 .login_id {
 	margin-top: 50px;
@@ -187,7 +189,7 @@ html, body {
 				<div class="submit">
 					<input type="submit" value="로그인" onclick="return loginCheck()">
 				</div>
-				<jsp:include page="userFooter.jsp"></jsp:include>
+				<jsp:include page="userIncludes/userFooter.jsp"></jsp:include>
 			</div>
 		</div>
 	</form>
