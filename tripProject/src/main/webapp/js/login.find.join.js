@@ -83,6 +83,18 @@ function checkJoin() {
 		return false;
 	}
 	
+	if (document.joinfrm.nickName.value.length == 0){
+		alert("닉네임을 입력하세요.");
+		joinfrm.nickName.focus();
+		return false;
+	}
+	
+	if (document.joinfrm.reNickName.value.length == 0){
+		alert("닉네임 중복확인을 해주세요.");
+		joinfrm.nickName.focus();
+		return false;
+	}
+	
 	if (document.joinfrm.email.value.length == 0){
 		alert("이메일을 입력하세요.");
 		joinfrm.email.focus();
