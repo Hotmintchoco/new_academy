@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Select"/>
     <fullyQualifiedTypeName name="java.lang.Long"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.zerock.mapper.BoardMapper"/>
@@ -27,7 +26,6 @@
     <fullyQualifiedTypeName name="com.sun.org.apache.bcel.internal.generic.NEW"/>
     <fullyQualifiedTypeName name="org.zerock.domain.PageDTO"/>
     <fullyQualifiedTypeName name="lombok.ToString"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.zerock.domain.BoardVO"/>
     <fullyQualifiedTypeName name="org.apache.tomcat.util.collections.ManagedConcurrentWeakHashMap"/>
     <fullyQualifiedTypeName name="org.junit.Test"/>
@@ -52,12 +50,14 @@
     <fullyQualifiedTypeName name="com.trip.mapper.DesDataMapper"/>
     <fullyQualifiedTypeName name="com.trip.domain.DesDataDTO"/>
     <fullyQualifiedTypeName name="org.springframework.http.client.AbstractClientHttpRequest"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.trip.mapper.UserMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="com.trip.domain.UserVO"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>
