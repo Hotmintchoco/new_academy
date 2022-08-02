@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trip.mapper.FesDataMapper">
+
+
+<!-- 전체 데이터 출력 -->
+	<select id="getList" resultType="com.trip.domain.FesDataDTO">
+		select * from festivaldata where num>0
+	</select>
+	
+	<insert id="insert">
+		insert into festivaldata(num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel)
+		values(fesdata_num.nextval,
+		#{title}, #{address}, #{firstimg}, #{startdate}, #{enddate}, #{mapx}, #{mapy}, #{mlevel})
+	</insert>
+<select id="selectOne" parameterType="Integer" resultType="com.trip.domain.FesDataDTO">
+      select * from festivaldata where num=#{num}
+   </select>
+   
+   <select id="read" resultType="com.trip.domain.FesDataDTO">
+      select * from festivaldata
+      where #{num} 
+      order by num desc
+   </select>
+	
+
+	
+	  <select id="getListWithPagging" resultType="com.trip.domain.FesDataDTO">
+      <![CDATA[
+         select num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+      from(
+         select
+         rownum rn, num, title, address, firstimg, startdate, enddate, mapx, mapy, mlevel
+         from festivaldata
+         where ROWNUM <= #{pageNum}*#{amount}
+      )
+      where
+      ]]>
+      
+      
+      <![CDATA[
+      rn > (#{pageNum}-1)*#{amount}
+      ]]>
+   </select>
+   
+   <select id="getTotalCount" resultType="int">
+      select count(*) from festivaldata where 
+         
+     num>0
+   </select>
+	
+	
+</mapper>

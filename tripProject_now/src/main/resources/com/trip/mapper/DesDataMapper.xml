@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trip.mapper.DesDataMapper">
+
+	<select id="getList" resultType="com.trip.domain.DesDataDTO">
+		select * from destinatinodata where num>0
+	</select>
+
+	<insert id="insert">
+		insert into destinatinodata(num, title, address, firstimg, secondimg, mapx, mapy)
+		values(desdata_seq.nextval,
+		#{title}, #{address}, #{firstImg}, #{secondImg}, #{mapX}, #{mapY})
+	</insert>
+	
+   <select id="read" resultType="com.trip.domain.DesDataDTO">
+      select * from destinatinodata
+      where num=#{num}
+   </select>
+	
+	
+		<select id="getListWithPagging"
+		resultType="com.trip.domain.DesDataDTO">
+		<![CDATA[
+			select num, title, firstImg
+		from(
+			select rownum rn, num, title, firstImg
+			from destinatinodata
+		where	
+		]]>
+		<![CDATA[
+		ROWNUM <= #{pageNum}*#{amount})
+		where
+		rn > (#{pageNum}-1)*#{amount}
+		]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from destinatinodata where
+		num > 0
+	</select>
+	
+		<insert id="register">
+
+		<selectKey keyProperty="num" order="BEFORE"	resultType="Long">
+			select desdata_seq.nextval from dual
+		</selectKey>
+
+		insert into destinatinodata(num, title, firstImg)
+		values(#{num},
+		#{title}, #{firstImg})
+	</insert>
+	
+		<update id="update">
+		update destinatinodata
+		set title = #{title},
+		address = #{address},
+		firstImg = #{firstImg}
+		where num = #{num}
+	</update>
+	
+	<delete id="delete">
+		delete from destinatinodata where num=#{num}
+	</delete>
+
+</mapper>
