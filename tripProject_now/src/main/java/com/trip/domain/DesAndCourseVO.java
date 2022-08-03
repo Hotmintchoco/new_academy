@@ -14,5 +14,5 @@ create table des_course(
 
 @Data
 public class DesAndCourseVO {
-	private int pathNum, detinationNum, courseNum;
+	private int pathNum, destinationNum, courseNum;
 }

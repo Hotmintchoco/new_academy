@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,26 +178,29 @@ font-size: 11pt;
 			</ul>
 		</div>
 		<br>
+		<c:forEach items="${list}" var="course">
 		
 		<div class="card">
 		<a href="page.do">
 			<img src="../img/pet.jpg" class="card-img-top" alt="...">
 		</a>
 			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
+				<h5 class="card-title">${course.courseTitle}</h5>
+				<p class="card-text">${course.courseContent}</p>
+				<p class="card-text">${course.courseCity}</p>
 			</div>
 			<ul class="list-group list-group-flush">
-				<li class="list-group-item">An item</li>
-				<li class="list-group-item">A second item</li>
-				<li class="list-group-item">A third item</li>
+			<c:forEach items="${course.desList}" var="destination">
+				<li class="list-group-item"></li>
+			</c:forEach>
 			</ul>
 			<div class="card-body">
 				<a href="page.do" class="card-link">Card link</a> <a href="#"
 					class="card-link">Another link</a>
 			</div>
 		</div>
+		
+		</c:forEach>
 		<div class="card">
 		<a href="page.do">
 			<img src="../img/pet.jpg" class="card-img-top" alt="...">
