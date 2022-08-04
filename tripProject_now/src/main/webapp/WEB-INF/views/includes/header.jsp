@@ -178,21 +178,21 @@ html, body {
          </form>
       </div>
       <ul class="navbar_menu">
-         <li><a href="../destination/list.do">여행지 추천</a></li>
-         <li><a href="../course/list.do">코스 추천</a></li>
-         <li><a href="../festival/page.do">축제</a></li>
-         <li><a href="../board/page.do">자유게시판</a></li>
+         <li><a href="/destination/list.do">여행지 추천</a></li>
+         <li><a href="/course/list.do">코스 추천</a></li>
+         <li><a href="/festival/page.do">축제</a></li>
+         <li><a href="/board/page.do">자유게시판</a></li>
          <c:choose>
 			<c:when test="${user == null}">
-       			<li><a href="../users/login.do">로그인</a></li>
+       			<li><a href="/users/login.do">로그인</a></li>
 			</c:when>
 			<c:otherwise>
 				<div class="btn-group">
 					<button type="button" class="btn btn-secondary" data-toggle="dropdown">마이페이지</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="../users/mypage.do">내 정보 보기</a></li>
+						<li><a href="/users/mypage.do">내 정보 보기</a></li>
 						<li><a href="#">내 글 보기</a></li>
-						<li><a href="../logout.do">로그아웃</a></li>
+						<li><a href="/logout.do">로그아웃</a></li>
 					</ul>
 				</div>
 			</c:otherwise>

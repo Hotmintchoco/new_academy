@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -72,14 +72,14 @@
 	   
 	</div>
 	<br><br>
-	<div id="slider">-
+	<div id="slider">
 	         <!-- title, city 입력 -->
 	     <div id="courseTitle">
-	     	<h1>코스 제목</h1>
-	     	<p>지역명</p>
+	     	<h1>${course.courseTitle}</h1>
+	     	<p>${course.courseCity}</p>
 	     	<button type="button" class="btn_good">
 	     		<span class="ico"></span>
-	     		<span class="num" id="numLike">10</span>
+	     		<span class="num" id="numLike">${course.courseLike}</span>
 	     	</button>
 	     	<hr>
 	     </div>
@@ -87,11 +87,46 @@
 	        
 	     <div id="map" style="width:500px;height:400px; margin: 0 auto;"></div>
 	     <p>총 거리</p><span id="i_result"></span>
+	     <input id="num" type="hidden" value="${course.courseNum}">
 	<hr>
 		
 	</div>
 	
 	<script>
+	
+	var num = document.getElementById('num').value;
+	
+	var courseService = (function() {
+		
+		function desList(num, callback, error){
+			console.log("get...................");
+	        $.getJSON("/course/page/" + num + ".json",
+	            function(data){
+	                if(callback) {
+	                    callback(data);
+	                }
+	            }).fail(function(xhr, status, err){
+	                if(error) {
+	                    error(err);
+	                }
+	            });
+	    } //end for desList
+	    return {
+	        desList : desList
+	    }; // 함수를 객체로 만들어서 리턴
+	})();
+	
+	courseService.desList(num, function (list) {
+				for(var i=0, len = list.length || 0; i<len; i++){
+					console.log(list[i]);
+				}
+			}
+	)
+		
+		
+		
+		
+		
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    mapOption = { 

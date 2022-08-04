@@ -47,68 +47,54 @@ ul > li > a {color: #212121;}
   --lightbrown: antiquewhite;
   --minRangeValue: 280px;
 }
-
 * {
   margin: 0;
   padding: 0;  
   outline: none;
   border: none;
 }
-
 button {
   cursor: pointer;
   background: none;
 }
-
 img {
   display: block;
   width: 290px;
   height: 193px;
 }
-
 ol,
 ul {
   list-style: none;
   margin:0;
   padding:0;
 }
-
-a {
-  color: inherit;
-}
-
+a div p, a div h5{text-decoration: none; color: black;}
 body {
   margin: 50px 0;
   color: var(--black);
   font: 1rem/1.3 sans-serif;
 }
-
 .gallery {
   padding: 0 2rem;
 }
-
 .container {
   max-width: 1030px;
   margin: 0 auto;
 }
-
 .d-none {
   display: none;
 }
 .image-list {
   margin: 3rem 0;
 }
-
 .image-list li {
   color: var(--darkblack);
 }
-
 .grid-view {
   display: grid;
   grid-gap: 80px;
   grid-template-columns: repeat(auto-fit, minmax(var(--minRangeValue), 1fr));
 }
-
 li div p {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -123,7 +109,6 @@ color:grey;
 font-size: 11pt;
 }
 .box_rightType{width:950px; height:50px; border:1px solid #e6e6e6; background-color:#f7f7f7; line-height: 50px;border-radius: 2em;}
-
 .box_rightType ul li {
     margin: 0 20px 10px 10px;
     padding: 0 0 0 0;
@@ -132,7 +117,6 @@ font-size: 11pt;
     font-size: 13pt;
 }
 .box_rightType ul li button{outline: 0;}
-
 #writebtn {
   background-color: #e7e7e7;
   border: none;
@@ -181,23 +165,19 @@ font-size: 11pt;
 		<c:forEach items="${list}" var="course">
 		
 		<div class="card">
-		<a href="page.do">
-			<img src="../img/pet.jpg" class="card-img-top" alt="...">
-		</a>
+		<a class='move' href="page.do?num=<c:out value="${course.courseNum}"/>">
+			<img src="<c:out value="${course.desList.get(0).firstImg}"/>" class="card-img-top" alt="...">
 			<div class="card-body">
 				<h5 class="card-title">${course.courseTitle}</h5>
 				<p class="card-text">${course.courseContent}</p>
 				<p class="card-text">${course.courseCity}</p>
 			</div>
+		</a>
 			<ul class="list-group list-group-flush">
 			<c:forEach items="${course.desList}" var="destination">
-				<li class="list-group-item"></li>
+				<li class="list-group-item">* ${destination.title}</li>
 			</c:forEach>
 			</ul>
-			<div class="card-body">
-				<a href="page.do" class="card-link">Card link</a> <a href="#"
-					class="card-link">Another link</a>
-			</div>
 		</div>
 		
 		</c:forEach>
@@ -239,8 +219,26 @@ font-size: 11pt;
 					class="card-link">Another link</a>
 			</div>
 		</div>
-		
 
 	</div>
+	
+<script>
+$(document).ready(function(){
+	
+	var result='<c:out value="${result}"/>';
+	console.log("result" + result);
+	
+	checkModal(result);
+	
+	// 뒤로가기시 modal화면 뜨는 문제 해결
+	$(".move").on("click", function(e){
+		e.preventDefault();
+		console.log("test------------------")
+		actionForm.append("<input type = 'hidden' name='courseNum' value='"+$(this).attr("href")+"'>");
+		actionForm.attr("action", "/page.do");
+		actionForm.submit();
+	})
+});
+</script>
 </body>
 </html>

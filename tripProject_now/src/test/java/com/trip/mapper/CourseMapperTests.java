@@ -46,7 +46,7 @@ public class CourseMapperTests {
 				log.info(dto);
 				desList.add(dto);
 			}
-
+			list.get(i).setDesList(desList);
 			i++;
 		}
 		log.info("------- courseList -------");
