@@ -8,13 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="fontawesome/css/all.min.css">
+<link rel="stylesheet" href="/resources/fontawesome/css/all.min.css">
 <!-- https://fontawesome.com/ -->
-<link rel="stylesheet" href="css/magnific-popup.css">
-<link rel="stylesheet" href="css/templatemo-ocean-vibes.css">
-<link rel="stylesheet" href="css/nav.css">
+<link rel="stylesheet" href="/resources/css/magnific-popup.css">
+<link rel="stylesheet" href="/resources/css/templatemo-ocean-vibes.css">
+<link rel="stylesheet" href="/resources/css/nav.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="/resources/css/animate.css">
 <script src="https://kit.fontawesome.com/c34800a0df.js" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -178,24 +178,37 @@ html, body {
          </form>
       </div>
       <ul class="navbar_menu">
-         <li><a href="../destination/list.do">여행지 추천</a></li>
-         <li><a href="../course/page.do">코스 추천</a></li>
-         <li><a href="../festival/page.do">축제</a></li>
-         <li><a href="../board/page.do">자유게시판</a></li>
+         <li><a href="/destination/list.do">여행지 추천</a></li>
+         <li><a href="/course/list.do">코스 추천</a></li>
+         <li><a href="/festival/page.do">축제</a></li>
+         <li><a href="/board/page.do">자유게시판</a></li>
          <c:choose>
 			<c:when test="${user == null}">
-       			<li><a href="../users/login.do">로그인</a></li>
+       			<li><a href="/users/login.do">로그인</a></li>
 			</c:when>
-			<c:otherwise>
+			
+			<c:when test="${user.admin == 1}">
 				<div class="btn-group">
 					<button type="button" class="btn btn-secondary" data-toggle="dropdown">마이페이지</button>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="../users/mypage.do">내 정보 보기</a></li>
+						<li><a href="/users/mypage.do">내 정보 보기</a></li>
 						<li><a href="#">내 글 보기</a></li>
-						<li><a href="../logout.do">로그아웃</a></li>
+						<li><a href="/logout.do">로그아웃</a></li>
 					</ul>
 				</div>
-			</c:otherwise>
+			</c:when>
+			
+			<c:when test="${user.admin == 0}">
+				<div class="btn-group">
+					<button type="button" class="btn btn-secondary" data-toggle="dropdown">마이페이지</button>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/users/list.do">회원 목록 조회</a></li>
+						<li><a href="#">내 글 보기</a></li>
+						<li><a href="/logout.do">로그아웃</a></li>
+					</ul>
+				</div>
+			</c:when>
+			
 		</c:choose>
       </ul>
    </nav>

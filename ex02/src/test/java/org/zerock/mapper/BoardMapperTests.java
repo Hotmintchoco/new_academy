@@ -1,11 +1,18 @@
 package org.zerock.mapper;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.PageDTO;
+import org.zerock.persistence.TimeMapperTests;
 
 import lombok.extern.log4j.Log4j;
 
@@ -18,40 +25,101 @@ public class BoardMapperTests {
 	
 	@Test
 	public void testGetList() {
-//		mapper.getList().forEach(board->log.info(board));
-		for(BoardVO vo : mapper.getList()) {
-			log.info(vo);
-		}
+		log.info("----------------------------------");
+		log.info(mapper.getList());
 	}
-	
 	@Test
-	public void testSelectKey() {
-		BoardVO vo = new BoardVO();
-		vo.setTitle("Jsp");
-		vo.setContent("JSP/servlet");
-		vo.setWriter("성윤정");
-		mapper.insertSelectKey(vo);
-		log.info(vo);
+	public void testRead() {
+		log.info("----------------------------------");
+		log.info(mapper.read(6L));
 	}
-	
 	@Test
-	public void testread() {
-		BoardVO vo = mapper.read(7L);
-		log.info(vo);
+	public void testDelete() {
+		log.info("----------------------------------");
+	    log.info("delete : " + mapper.delete(6L));
 	}
-	
 	@Test
-	public void testdelete() {
-		log.info("delete count:" + mapper.delete(7L));
+	public void testInsert() {
+		BoardVO vo  =  new BoardVO();
+		vo.setTitle("spring2");
+		vo.setContent("��ƴ�2");
+		vo.setWriter("��ſ�2");
+		log.info("----------------------------------");
+		log.info("insert : " + mapper.insert(vo));
 	}
-	
+	@Test
+	public void testInsertSelectKey() {
+		BoardVO vo  =  new BoardVO();
+		vo.setTitle("java");
+		vo.setContent("java");
+		vo.setWriter("java2");
+		log.info("----------------------------------");
+		log.info("insert : " + mapper.insertSelectKey(vo));
+	}
 	@Test
 	public void testupdate() {
-		BoardVO vo = new BoardVO();
-		vo.setBno(8L);
-		vo.setTitle("오라클");
-		vo.setContent("오라클");
-		vo.setWriter("오라클");
-		log.info("update" + mapper.update(vo));
+		BoardVO vo  =  new BoardVO();
+		vo.setBno(9L);
+		vo.setTitle("aa");
+		vo.setContent("bbb........");
+		vo.setWriter("cc");
+		log.info("----------------------------------");
+		log.info("insert : " + mapper.update(vo));
+	}
+	
+	@Test
+	public void testPaging() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(3);
+		cri.setAmount(10);
+		List<BoardVO> list = mapper.getListWithPagging(cri);
+		log.info(list);
+	}
+	
+	@Test
+	public void testPageDTO() {
+		Criteria cri = new Criteria();
+		cri.setPageNum(15);
+		cri.setAmount(10);
+		PageDTO pageDTO = new PageDTO(cri, 315);
+		log.info(pageDTO);
+	}
+	
+	@Test
+	public void testSearchPaging() {
+		Criteria cri = new Criteria();
+		cri.setType("TCW");
+		cri.setKeyword("홍길동");
+		List<BoardVO> list = mapper.getListWithPagging(cri);
+		log.info(list);
+	}
+	
+	@Test
+	public void testSearch() {
+		Map<String, String>map = new HashMap<>();
+		map.put("T", "한호");
+		map.put("C", "도둑");
+		map.put("W", "누구");
+		
+		Map<String, Map<String, String>> outer = new HashMap<>();
+		
+		outer.put("map", map);
+		List<BoardVO> list = mapper.searchTest(outer);
+		log.info(list);
+	}
+	
+	@Test
+	public void testTotal() {
+		Criteria cri = new Criteria();
+		cri.setType("T");
+		cri.setKeyword("한호");
+		
+		int count = mapper.getTotalCount(cri);
+		log.info("-------------------------------");
+		log.info(count);
 	}
 }
+
+
+
+

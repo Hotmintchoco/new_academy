@@ -1,16 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>코스추천</title>
-  <link rel="stylesheet" href="../fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-  <link rel="stylesheet" href="../css/nav.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../css/animate.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -51,6 +49,9 @@
 #courseTitle h1 {text-align: center;}
 #courseTitle p {text-align: center;}
 
+#desListView {background-color: #D5D5D5; height: 650px; margin: 30px 0 30px 0;
+overflow: auto; overflow-y: hidden; white-space: nowrap}
+
 .btn_good .ico {
     background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost01_on.png);
     width: 42px; height: 36px;
@@ -58,6 +59,13 @@
     test-indent: -9999px;
     }
 .btn_good { width: 75px; height: 55px; border: none; background-color: #FFFFFF; }
+
+.desBoard { width: 250px; height: 450px; background-color: white;
+	display: inline-block; margin: 75px 0 0 60px; border: 1px solid black;
+	position: relative; white-space: normal;}
+.card-body {position: absolute;}
+
+.nonDiv	{ height: 100px; background-color: white; }
 </style>
      
 </head>
@@ -73,63 +81,85 @@
 	</div>
 	<br><br>
 	<div id="slider">
-	         <!-- title, city 입력 -->
+	     <!-- title, city 입력 -->
 	     <div id="courseTitle">
-	     	<h1>코스 제목</h1>
-	     	<p>지역명</p>
-	     	<button type="button" class="btn_good">
+	     	<h1>${course.courseTitle}</h1>
+	     	<p>${course.courseCity}</p>
+	     	<button data-oper='likes' class="btn_good">
 	     		<span class="ico"></span>
-	     		<span class="num" id="numLike">10</span>
+	     		<span class="numLike" id="numLike">${course.courseLike}</span>
 	     	</button>
+	     	
 	     	<hr>
 	     </div>
 	     
-	        
-	     <div id="map" style="width:500px;height:400px; margin: 0 auto;"></div>
+	     <!-- 맵 view -->  
+	     <div id="map" style="width:900px;height:500px; margin: 0 auto;"></div>
 	     <p>총 거리</p><span id="i_result"></span>
+	     
+	     <input id="num" type="hidden" value="${course.courseNum}">
+	     <input id="resultMapX" type="hidden" value="${resultMapX}">
+	     <input id="resultMapY" type="hidden" value="${resultMapY}">
+	     <input id="likes" type="hidden" value="${course.courseLike}">
+	
 	<hr>
 		
+		<!-- 여행지 리스트 view -->
+		<div id="desListView">
+			<c:forEach items="${course.desList}" var="destination">
+				<div class="card desBoard">
+					<div class="card-body">
+						<h4 class="card-title">${destination.destinationTitle}</h4>
+						<img class="card-img-top" src="<c:out value="${destination.destinationFirstImg}"/>" alt="Card image"
+						style="width: 100%">
+						<p class="card-text">Some example text some example text. John
+							Doe is an architect and engineer</p>
+						<a href="/destination/get.do?num=<c:out value="${destination.destinationNum}"/>" class="btn btn-primary stretched-link">여행지 상세보기</a>
+					</div>
+				</div>
+			</c:forEach>
+		</div>
+		
+		<!-- 아래 여백 -->
+		<div class="nonDiv">
+		</div>
+		
+	
 	</div>
 	
+	<script type="text/javascript" src="/resources/js/courseService.js"></script>
+	
 	<script>
+	
+ 	var num = document.getElementById('num').value;
+	var resultMapX = document.getElementById('resultMapX').value;
+	var resultMapY = document.getElementById('resultMapY').value;
+	var likes = parseInt(document.getElementById('likes').value);
+	
+	var courseList = new Array();
+	var totalMapX;
+	var totalMapY;
+	courseService.desList(num, function (list) {
+		for(var i=0, len = list.length || 0; i<len; i++){
+			console.log(list[i]);
+		}
+		courseList = list;
+		console.log(courseList);
+	
 		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 	    mapOption = { 
-	        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
+	        center: new kakao.maps.LatLng(resultMapY, resultMapX), // 지도의 중심좌표
+	        level: 4 // 지도의 확대 레벨
 	    };
 
 		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 		var distanceOverlay;
 		var dots = {};
-
-		// 마커를 표시할 위치와 title 객체 배열입니다 
-		var positions = [
-		    {
-		        title: '카카오', 
-		        latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-		    },
-		    {
-		        title: '생태연못', 
-		        latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-		    },
-		    {
-		        title: '텃밭', 
-		        latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-		    },
-		    {
-		        title: '근린공원',
-		        latlng: new kakao.maps.LatLng(33.451393, 126.570738)
-		    },
-		    {
-		        title: '제주공항',
-		        latlng: new kakao.maps.LatLng(33.5106, 126.4914)
-		    }
-		];
-
 	    
-		for (var i = 0; i < positions.length; i ++) {
-			var imageSrc = "../img/marker/marker-icon" + (i+1) +".png"; 
+		for (var i=0; i<courseList.length; i++) {
+			var latlng = new kakao.maps.LatLng(courseList[i].destinationMapY, courseList[i].destinationMapX)
+			var imageSrc = "/resources/img/marker/marker-icon" + (i+1) +".png"; 
 		    
 		    // 마커 이미지의 이미지 크기 입니다
 		    var imageSize = new kakao.maps.Size(40, 45); 
@@ -140,21 +170,21 @@
 		    // 마커를 생성합니다
 		    var marker = new kakao.maps.Marker({
 		        map: map, // 마커를 표시할 지도
-		        position: positions[i].latlng, // 마커를 표시할 위치
-		        title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		        position: latlng, // 마커를 표시할 위치
+		        title : courseList[i].destinationTitle, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
 		        image : markerImage // 마커 이미지 
 		    });
 		    
 		 // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		    var content = '<div class="customoverlay">' +
-		        '  <a href="https://map.kakao.com/link/map/11394059" target="_blank">' +
-		        '    <span class="title">'+ positions[i].title +'</span>' +
+		        '  <a href="/destination/get.do?num='+courseList[i].destinationNum+'">' +
+		        '    <span class="title">'+ courseList[i].destinationTitle +'</span>' +
 		        '  </a>' +
 		        '</div>';
 		    
 		    var customOverlay = new kakao.maps.CustomOverlay({
 		        map: map,
-		        position: positions[i].latlng,
+		        position: latlng,
 		        content: content,
 		        yAnchor: 1 
 		    });
@@ -165,9 +195,10 @@
 		var distance;
 		var totalDistance = 0;
 
-		for (var i = 0; i < positions.length; i++) {
+		for (var i = 0; i < courseList.length; i++) {
 			if (i != 0) {
-				linePath = [ positions[i - 1].latlng, positions[i].latlng ]
+				linePath = [ new kakao.maps.LatLng(courseList[i-1].destinationMapY, courseList[i-1].destinationMapX),
+							 new kakao.maps.LatLng(courseList[i].destinationMapY, courseList[i].destinationMapX) ]
 			}
 			;
 			lineLine.setPath(linePath);
@@ -184,9 +215,23 @@
 
 			distance = Math.round(lineLine.getLength());
 			totalDistance = totalDistance + distance; 
-			displayCircleDot(positions[i].latlng, distance);
+			displayCircleDot(new kakao.maps.LatLng(courseList[i].destinationMapY, courseList[i].destinationMapX), distance);
+		}
+		if(7500< totalDistance && totalDistance < 12500) {
+		 	map.setLevel(5);
+		} else if(12500<= totalDistance && totalDistance < 20000){
+			map.setLevel(6);
+		} else if(20000<= totalDistance && totalDistance < 30000){
+			map.setLevel(7);
+		} else if(30000<= totalDistance && totalDistance < 40000){
+			map.setLevel(8);
+		} else if(40000<= totalDistance && totalDistance < 80000){
+			map.setLevel(9);
+		} else if(80000<= totalDistance){
+			map.setLevel(10);
 		}
 		
+	    
 		function displayCircleDot(position, distance) {
 			if (1000 > distance && distance > 0) {
 				// 마커까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
@@ -219,8 +264,18 @@
 		
 		var result = totalDistance + "km";
 		document.getElementById("i_result").innerHTML=result;
-	</script>   
+	})
+	
+	$("button[data-oper='likes']").on("click", function(e){
+		courseService.like(num,
+			function(result){
+				alert("좋아요");
+			}
+		)
+		likes += 1;
+		document.getElementById("numLike").innerHTML=likes;
+	});
+	</script>
     
-<jsp:include page="../includes/footer.jsp"></jsp:include>
 </body>
 </html>

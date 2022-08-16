@@ -3,11 +3,13 @@ package org.zerock.service;
 import java.util.List;
 
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 
 public interface BoardService {
-	void register(BoardVO vo); //등록
-	int modify(BoardVO vo); //수정
-	int remove(Long bno); //삭제
-	BoardVO get(Long bno); //읽기
-	List<BoardVO> getList(); //전체 읽기
+	public void register(BoardVO vo);
+	public BoardVO get(Long bno);
+	public int modify(BoardVO vo);
+	public int remove(Long bno);
+	public List<BoardVO> getList(Criteria cri);
+	public int getTotal(Criteria cri);
 }

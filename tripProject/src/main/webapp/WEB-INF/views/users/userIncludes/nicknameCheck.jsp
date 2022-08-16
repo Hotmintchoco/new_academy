@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>아이디 중복확인</title>
-<script type="text/javascript" src="../js/login.find.join.js"></script>
+<script type="text/javascript" src="/resources/js/login.find.join.js"></script>
 </head>
 <body>
 	<h2>아이디 중복확인</h2>

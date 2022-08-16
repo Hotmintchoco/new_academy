@@ -25,7 +25,7 @@ public class FesDataMapperTests {
 	public void testInsert() {
 		try {
 			Document doc = Jsoup.connect("http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchFestival"
-					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=150&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
+					+ "?serviceKey=sWi23NfHCswD2JLkVzlAjWdx84T9hH%2B4%2BgYdeHg5rakMR397CZtjr1hoq8Mo56LMzSCjxrlMzLEkI0Bi%2FwFQ0Q%3D%3D&MobileOS=ETC&numOfRows=500&MobileApp=AppTest&arrange=A&listYN=Y&eventStartDate=20220701").get();
 			Elements all = doc.select("item");
 			Elements el = doc.getElementsByAttribute("firstimage");
 			
@@ -46,7 +46,7 @@ public class FesDataMapperTests {
 			Elements elmapY = all.select("mapy");
 			Elements elmLevel = all.select("mlevel");
 			
-			for(int i=0; i<100; i++) {
+			for(int i=0; i<300; i++) {
 				
 				String htmlTmp = all.get(i).html();
 				if (!(htmlTmp.contains("firstimage"))) {
@@ -59,6 +59,16 @@ public class FesDataMapperTests {
 					eladdress.add(i, eladdr);
 					System.out.println("noaddress");
 				}
+				if (!(htmlTmp.contains("mapx"))) {
+		               Element elmapx = new Element("mapx");
+		               elmapX.add(i, elmapx);
+		               
+		               System.out.println("nomapx");
+		            }if (!(htmlTmp.contains("mapy"))) {
+		               Element elmapy = new Element("mapy");
+		               elmapY.add(i, elmapy);
+		               System.out.println("nomapy");
+		            }
 				if (!(htmlTmp.contains("mlevel"))) {
 					Element ellevel = new Element("mlevel");
 					elmLevel.add(i, ellevel);
@@ -75,7 +85,7 @@ public class FesDataMapperTests {
 				
 				
 				
-				System.out.println("번호 : " + (i+1));
+				System.out.println("��ȣ : " + (i+1));
 				FesDataDTO dto = new FesDataDTO();
 				dto.setTitle(title);
 				dto.setAddress(address);

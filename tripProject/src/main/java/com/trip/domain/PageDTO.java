@@ -20,7 +20,7 @@ public class PageDTO {
 		this.endPage = (int)(Math.ceil(cri.getPageNum()/10.0)) * 10;
 		this.startPage = endPage-9;
 		
-		int readEnd = (int)(Math.ceil(total*1.0)/cri.getAmount());
+		int readEnd = (int)(Math.ceil((total*1.0)/cri.getAmount()));
 		
 		if(endPage >  readEnd) {
 			endPage = readEnd;

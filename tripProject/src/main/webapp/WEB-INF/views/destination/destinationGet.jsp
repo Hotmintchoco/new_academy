@@ -39,10 +39,10 @@
   padding-right: 15px;
 }
 
- ul > li > a {color: #212121;}
- #slider {width: 1000px; height: 1000px; margin: 0 auto;}
- 
- 
+ul > li > a {color: #212121;}
+#slider {width: 1000px; height: 1000px; margin: 0 auto;}
+
+
 :root {
   --black: #1a1a1a;
   --white: #fff;
@@ -141,33 +141,41 @@ font-size: 11pt;
 <div id="slider">
          <!-- 여기에 내용 넣으세요 -->
         <div class="panel-body">
+        <%-- <span class="text-dark mb-0" th:utext="${destination.destinationFirstImg}"></span> --%>
 				<div class="form-group">
-					<label>Bno</label>
-					<input name="num" class="form-control" readonly="readonly" value='<c:out value="${destination.num}"/>'><br>
+					<label>여행지</label>
+					<input name="destinationTitle" class="form-control" readonly="readonly" value='<c:out value="${destination.destinationTitle}"/>'><br>
 				</div>
 				<div class="form-group">
-					<label>Title</label>
-					<input name="title" class="form-control" readonly="readonly" value='<c:out value="${destination.title}"/>'><br>
+					<label>주소</label>
+					<input name="destinationAddress" class="form-control" readonly="readonly" value='<c:out value="${destination.destinationAddress}"/>'><br>
 				</div>
 				<div class="form-group">
-					<label>이미지</label>
-					<img src="${destination.firstImg}"  width="1500">
+					<label>사진</label>
+					<img src="${destination.destinationFirstImg}"  width="1500">
 				</div>
+				<div class="form-group">
+					<label>내용</label>
+					 <textarea name="destinationContent" rows="10" class="form-control" readonly="readonly" style="resize: none;">${destination.destinationContent}</textarea>	
+				</div>
+				
 
-				<button data-oper='modify' class="btn btn-default">수정하기</button>
+				<button data-oper='update' class="btn btn-default">수정하기</button>
 				<button data-oper='list' class="btn btn-info">목록</button>
 				
 				<form id='operForm' action="/destination/list.do" method="get">
-					<input type="hidden" id="num" name="num" value='<c:out value="${destination.num}"/>'>
+					<input type="hidden" id="destinationNum" name="destinationNum" value='<c:out value="${destination.destinationNum}"/>'>
 					<input type="hidden" name="pageNum" value='<c:out value="${cri.pageNum}"/>'>
 					<input type="hidden" name="amount" value='<c:out value="${cri.amount}"/>'>
+					<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+					<input type="hidden" name="keyword"	value='<c:out value="${cri.keyword}"/>'>
 				</form>
 			</div>
 <script>
 	var operForm=$("#operForm");
 	
-	$("button[data-oper='modify']").on("click",function(e){
-		operForm.attr("action","../destination/modify.do").submit();
+	$("button[data-oper='update']").on("click",function(e){
+		operForm.attr("action","../destination/update.do").submit();
 	});
 	
 	$("button[data-oper='list']").on("click",function(e){
@@ -176,6 +184,6 @@ font-size: 11pt;
 	});
 </script>
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>    
+<%-- <jsp:include page="../includes/footer.jsp"></jsp:include> --%>
 </body>
 </html>

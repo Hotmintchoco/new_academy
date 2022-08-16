@@ -56,8 +56,8 @@
     <fullyQualifiedTypeName name="org.junit.Test"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.trip.mapper.DesDataMapper"/>
-    <fullyQualifiedTypeName name="com.trip.domain.DesDataDTO"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.awt.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="com.trip.domain.DesDataDTO"/>
 </qualifiedTypeNameHistroy>

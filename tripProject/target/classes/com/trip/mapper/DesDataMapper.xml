@@ -4,52 +4,119 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.trip.mapper.DesDataMapper">
 
+
+	<sql id="criterial">
+		<trim prefix="(" suffix=") and">
+			<foreach collection="typeArr" item="type" separator="or">
+				<if test="type=='T'.toString()">
+					destinationTitle like '%'|| #{keyword} ||'%'
+				</if>
+				<if test="type=='C'.toString()">
+					destinationContent like '%'|| #{keyword} ||'%'
+				</if>
+				<if test="type=='A'.toString()">
+					destinationAddress like '%'|| #{keyword} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+
 	<select id="getList" resultType="com.trip.domain.DesDataDTO">
-		select * from destinatinodata where num>0
+		select * from destination order by destinationNum desc
+	</select>
+	
+	<select id="getAddressList" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%'
+	</select>
+	<select id="getAddressListggd" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '인천' ||'%'
+	</select>
+	<select id="getAddressListcb" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '세종' ||'%'
+	</select>
+	<select id="getAddressListcn" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '대전' ||'%'
+	</select>
+	<select id="getAddressListgb" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '대구' ||'%'
+	</select>
+	<select id="getAddressListgn" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '울산' ||'%' or destinationAddress like '%'|| '부산' ||'%'
+	</select>
+	<select id="getAddressListjn" resultType="com.trip.domain.DesDataDTO">
+		select * from destination where 
+		destinationAddress like '%'|| #{city} ||'%' or destinationAddress like '%'|| '광주' ||'%'
 	</select>
 
 	<insert id="insert">
-		insert into destinatinodata(num, title, content, address, firstimg, secondimg, mapx, mapy)
-		values(desdata_seq.nextval, #{content},
-		#{title}, #{address}, #{firstImg}, #{secondImg}, #{mapX}, #{mapY})
+		insert into destination(destinationNum, destinationTitle, destinationAddress, destinationFirstimg,
+		destinationSecondimg, destinationMapx, destinationMapy, usernum)
+		values(destination_seq.nextval,
+		#{destinationTitle}, #{destinationAddress}, #{destinationFirstImg}, #{destinationSecondImg}, 
+		#{destinationMapX}, #{destinationMapY}, 1)
 	</insert>
 	
    <select id="read" resultType="com.trip.domain.DesDataDTO">
-      select * from destinatinodata
-      where num=#{num}
+      select * from destination
+      where destinationNum=#{destinatioNum}
    </select>
 	
 	
 		<select id="getListWithPagging"
 		resultType="com.trip.domain.DesDataDTO">
 		<![CDATA[
-			select num, title, content, firstImg
+			select destinationNum, destinationTitle, destinationFirstImg, destinationAddress, destinationSecondImg, destinationContent
 		from(
-			select rownum rn, num, title, content, firstImg
-			from destinatinodata
-		where	
+			select /*+ INDEX(destination indexNum)*/
+			rownum rn, destinationNum, destinationTitle, destinationFirstImg, destinationAddress, destinationSecondImg, destinationContent
+			from destination
+			
+		where 
 		]]>
+		
+		<include refid="criterial"></include>
+		
 		<![CDATA[
 		ROWNUM <= #{pageNum}*#{amount})
 		where
-		rn > (#{pageNum}-1)*#{amount}
-		]]>
+		rn > (#{pageNum}-1)*#{amount} 
+		
+		]]>	
 	</select>
 
-	<select id="getTotalCount" resultType="int">
-		select count(*) from destinatinodata where
-		num > 0
+	<select id="getTotal" resultType="int">
+		select count(*) from destination where
+		destinationNum > 0
 	</select>
 	
-		<insert id="insertSelectKey">
+		<insert id="register">
 
-		<selectKey keyProperty="num" order="BEFORE"	resultType="int">
-			select seq_board.nextval from dual
+		<selectKey keyProperty="destinationNum" order="BEFORE"	resultType="Long">
+			select destination_seq.nextval from dual
 		</selectKey>
 
-		insert into destinatinodata(num, title, content, img)
-		values(#{bno},
-		#{title}, #{content}, #{writer})
+		insert into destination(destinationNum, destinationAddress, destinationTitle, destinationFirstImg, destinationSecondImg)
+		values(destination_seq.nextval,
+		#{destinationTitle}, #{destinationAddress}, #{destinationFirstImg}, #{destinationSecondImg})
 	</insert>
+	
+	<update id="update">
+		update destination
+		set destinationTitle = #{destinationTitle},
+		destinationAddress = #{destinationAddress},
+		destinationFirstImg = #{destinationFirstImg},
+		destinationContent = #{destinationContent}
+		where destinationNum = #{destinationNum}
+	</update>
+	
+	<delete id="delete">
+		delete from destination where destinationNum=#{destinationNum}
+	</delete>
 
 </mapper>

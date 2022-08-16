@@ -44,77 +44,40 @@
 </style>
 	
 
-	<script>
-	$(document).ready(function() {
-	    $('#summernote').summernote({
-	        placeholder: '내용을 입력하세요',
-	        tabsize: 2,
-	        height: 500,
-	        lang : 'ko-KR',
-	        disableResizeEditor: true,
-	        toolbar: [
-	            // 글꼴 설정
-	            /* ['fontname', ['fontname']], */
-	            // 글자 크기 설정
-	            ['fontsize', ['fontsize']],
-	            // 굵기, 기울임꼴, 밑줄,취소 선, 서식지우기
-	            ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
-	            // 글자색
-	            ['color', ['forecolor','color']],
-	            // 표만들기
-	            ['table', ['table']],
-	            // 글머리 기호, 번호매기기, 문단정렬
-	            ['para', ['ul', 'ol', 'paragraph']],
-	            // 줄간격
-	            ['height', ['height']],
-	            // 그림첨부, 링크만들기, 동영상첨부
-	            ['insert',['picture','link','video']],
-	            // 코드보기, 확대해서보기, 도움말
-	            ['view', ['codeview','fullscreen', 'help']]
-	            ],
-	            // 추가한 글꼴
-	            /* fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋음체','바탕체'], */
-	            // 추가한 폰트사이즈
-	            fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-	        })
-
-	        var setting = {
-	                height : 300,
-	                minHeight : null,
-	                maxHeight : null,
-	                focus : true,
-	                lang : 'ko-KR',
-	                toolbar : toolbar,
-	                callbacks : { //여기 부분이 이미지를 첨부하는 부분
-	                onImageUpload : function(files, editor,
-	                welEditable) {
-	                for (var i = files.length - 1; i >= 0; i--) {
-	                uploadSummernoteImageFile(files[i],
-	                this);
-	                        }
-	                    }
-	                }
-	             };
-
-	    $('#summernote').summernote(setting);
-	});
-
-	function uploadSummernoteImageFile(file, el) {
-	    data = new FormData();
-	    data.append("file", file);
-	    $.ajax({
-	        data : data,
-	        type : "POST",
-	        url : "uploadSummernoteImageFile",
-	        contentType : false,
-	        enctype : 'multipart/form-data',
-	        processData : false,
-	        success : function(data) {
-	            $(el).summernote('editor.insertImage', data.url);
-	        }
-	    });
-	};
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#summernote').summernote({
+       height : 300,
+       lang : 'ko-KR',
+       placeholder : '내용을 입력하세요',
+       minHeight : 400,
+       disableResizeEditor:true,
+       focus:true,
+       callbacks : {
+          onImageUpload : function(files, editor, welEditable) {
+             for (var i = files.length - 1; i >= 0; i--) {
+                uploadSummernoteimageFile(files[i],this);
+             }
+          }
+       }
+    });
+ });
+ function uploadSummernoteimageFile(file,editor){
+    data=new FormData();
+    data.append("file",file);
+    $.ajax({
+       url:"summernoteImage.do",
+       data : data,
+       type : "POST",
+       enctype : 'multipart/form-data',
+       dataType:'JSON',
+       contentType:false,
+       processData:false,
+       success: function(data){
+          $(editor).summernote('insertImage',data.url);
+       }
+    });
+ }
 </script>
  
 </head>
@@ -130,18 +93,27 @@
 		<h3>여행지 추천 글 쓰기</h3>
 		<br>
 
-		<form method="post" action="/destination/register.do">
+		<form method="post" action="/destination/register.do" enctype="multipart/form-data">
+		<%-- <input type="hidden" name="userNum" value='<c:out value="${user.userNum}"/>'> --%>
 			<table border=1 width="100%">
 				<tr>
-					<td align="center">제목</td>
-					<td><input type="text" name="title" style="width: 100%"></td>
+					<td align="center">여행지 이름</td>
+					<td><input type="text" name="destinationTitle" style="width: 100%"></td>
 				</tr>
 				<tr>
-					<td colspan="2"><textarea id="summernote" name="content"></textarea>
+					<td align="center">여행지 주소</td>
+					<td><input type="text" name="destinationAddress" style="width: 100%"></td>
+				</tr>
+				<tr>
+					<td align="center">썸네일</td>
+					<td><input type="file" name="destinationFirstImg" style="width: 100%"></td>
+				</tr>
+				<tr>
+				<td colspan="2"><textarea class="form-control" id="summernote" name="destinationSecondImg"></textarea>
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="등록" onclick="goWrite(this.form)">
+			<input type="submit" value="등록">
 		</form>
 		
 		

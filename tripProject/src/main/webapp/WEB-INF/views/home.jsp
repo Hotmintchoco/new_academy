@@ -5,11 +5,7 @@
 <html>
 <head>
 <title>여행가기 좋은날</title>
-<link rel="stylesheet" href="fontawesome/css/all.min.css"> <!-- https://fontawesome.com/ -->
-<link rel="stylesheet" href="css/magnific-popup.css"> 
-<link rel="stylesheet" href="css/nav.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -66,19 +62,19 @@ p {color : #212121;}
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="carousel-img d-block w-100" src="img/jejudo.jpg" alt="First slide">
+            <img class="carousel-img d-block w-100" src="/resources/img/jejudo.jpg" alt="First slide">
             <div class="carousel-caption d-none d-md-block">
                 <p class="subtitle"> <h1>올 여름, 해수욕장 어디로 가지?</h1></p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="carousel-img d-block w-100" src="img/BlueHouse.jpg" alt="Second slide">
+            <img class="carousel-img d-block w-100" src="/resources/img/BlueHouse.jpg" alt="Second slide">
              <div class="carousel-caption d-none d-md-block">
                 <p class="subtitle"><h1>74년 만에 공개된 비밀 정원, 청와대 이야기</h1></p>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="carousel-img d-block w-100" src="img/Woljeonggyo.jpg" alt="Third slide">
+            <img class="carousel-img d-block w-100" src="/resources/img/Woljeonggyo.jpg" alt="Third slide">
             <div class="carousel-caption d-none d-md-block">
                 <p class="subtitle"><h1>신라 천년의 밤을 만나다! 경주 동궁과 월지, 월정교</h1></p>
             </div>
@@ -116,7 +112,7 @@ p {color : #212121;}
                <a href="images/img_1.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/seosan.jpg" alt="Image" class="img-responsive">
+                     <img src="/resources/img/seosan.jpg" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>충청도</h2>
@@ -126,10 +122,10 @@ p {color : #212121;}
                </a>
             </div>
             <div class="col-4">
-               <a href="images/img_2.jpg" class="fh5co-card-item image-popup">
+               <a href="/resources/images/img_2.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/yeongwol.jpg" alt="Image" class="img-responsive">
+                     <img src="/resources/img/yeongwol.jpg" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>강원도 </h2>
@@ -139,10 +135,10 @@ p {color : #212121;}
                </a>
             </div>
             <div class="col-4">
-               <a href="images/img_3.jpg" class="fh5co-card-item image-popup">
+               <a href="/resources/images/img_3.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/pet.jpg"" alt="Image" class="img-responsive">
+                     <img src="/resources/img/pet.jpg"" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>경상도</h2>
@@ -154,10 +150,10 @@ p {color : #212121;}
 
 
             <div class="col-4">
-               <a href="images/img_4.jpg" class="fh5co-card-item image-popup">
+               <a href="/resources/images/img_4.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/suwon.jpeg" alt="Image" class="img-responsive">
+                     <img src="/resources/img/suwon.jpeg" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>경기도</h2>
@@ -168,10 +164,10 @@ p {color : #212121;}
             </div>
 
             <div class="col-4">
-               <a href="images/img_5.jpg" class="fh5co-card-item image-popup">
+               <a href="/resources/images/img_5.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/yeosu.jpg" alt="Image" class="img-responsive">
+                     <img src="/resources/img/yeosu.jpg" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>전라도</h2>
@@ -182,10 +178,10 @@ p {color : #212121;}
             </div>
 
             <div class="col-sm-4">
-               <a href="images/img_6.jpg" class="fh5co-card-item image-popup">
+               <a href="/resources/images/img_6.jpg" class="fh5co-card-item image-popup">
                   <figure>
                      <div class="overlay"><i class="ti-plus"></i></div>
-                     <img src="img/jeju.jpeg" alt="Image" class="img-responsive">
+                     <img src="/resources/img/jeju.jpeg" alt="Image" class="img-responsive">
                   </figure>
                   <div class="fh5co-text">
                      <h2>제주도</h2>

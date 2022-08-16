@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -20,133 +22,134 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-           @font-face {
-    font-family: 'yg-jalnan';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-      
-   * {font-family: 'yg-jalnan', cursive }
-
-        .gd-container {
-  max-width: 1100px;
-  position: relative;
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
- ul > li > a {color: #212121;}
- #slider {width: 1000px; height: 1000px; margin: 0 auto;}
- 
- 
-:root {
-  --black: #1a1a1a;
-  --white: #fff;
-  --gray: #ccc;
-  --darkgreen: #18846C;
-  --lightbrown: antiquewhite;
-  --minRangeValue: 280px;
+@font-face {
+	font-family: 'yg-jalnan';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
 }
 
 * {
-  margin: 0;
-  padding: 0;  
-  outline: none;
-  border: none;
+	font-family: 'yg-jalnan', cursive
+}
+
+.gd-container {
+	max-width: 1100px;
+	position: relative;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+ul>li>a {
+	color: #212121;
+}
+
+#slider {
+	width: 1000px;
+	height: 1000px;
+	margin: 0 auto;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+	border: none;
 }
 
 button {
-  cursor: pointer;
-  background: none;
+	cursor: pointer;
+	background: none;
 }
 
 img {
-  display: block;
-  width: 290px;
-  height: 193px;
+	display: block;
+	width: 250px;
+	height: 150px;
 }
 
-ol,
-ul {
-  list-style: none;
-  margin:0;
-  padding:0;
+ol, ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 a {
-  color: inherit;
+	color: inherit;
 }
 
 body {
-  margin: 50px 0;
-  color: var(--black);
-  font: 1rem/1.3 sans-serif;
-}
-
-.gallery {
-  padding: 0 2rem;
-}
-
-.container {
-  max-width: 1030px;
-  margin: 0 auto;
-}
-
-.d-none {
-  display: none;
-}
-.image-list {
-  margin: 3rem 0;
-}
-
-.image-list li {
-  color: var(--darkblack);
-}
-
-.grid-view {
-  display: grid;
-  grid-gap: 80px;
-  grid-template-columns: repeat(auto-fit, minmax(var(--minRangeValue), 1fr));
+	margin: 50px 0;
+	color: var(- -black);
+	font: 1rem/1.3 sans-serif;
 }
 
 li div p {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 290px;
-  height: 20px;
-  color: black;
-  font-size: 13pt;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 290px;
+	height: 20px;
+	color: black;
+	font-size: 13pt;
 }
-#child{
-color:grey;
-font-size: 11pt;
+
+#child {
+	color: grey;
+	font-size: 11pt;
 }
-.box_rightType{width:950px; height:50px; border:1px solid #e6e6e6; background-color:#f7f7f7; line-height: 50px;border-radius: 2em;}
+
+.box_rightType {
+	width: 950px;
+	height: 50px;
+	border: 1px solid #e6e6e6;
+	background-color: #f7f7f7;
+	line-height: 50px;
+	border-radius: 2em;
+}
 
 .box_rightType ul li {
-    margin: 0 20px 10px 10px;
-    padding: 0 0 0 0;
-    border : 0;
-    float: left;
-    font-size: 13pt;
+	margin: 0 20px 10px 10px;
+	padding: 0 0 0 0;
+	border: 0;
+	float: left;
+	font-size: 13pt;
 }
-.box_rightType ul li button{outline: 0;}
+
+.box_rightType ul li button {
+	outline: 0;
+}
 
 #writebtn {
-  background-color: #e7e7e7;
-  border: none;
-  padding: 13px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  float: right;
-  outline: 0;
+	background-color: #e7e7e7;
+	border: none;
+	padding: 13px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	float: right;
+	outline: 0;
+}
+
+#desListTable {
+	
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 100%;
+	table-layout: fixed;
+}
+
+#desListTable td {
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 </style>
   
@@ -155,111 +158,163 @@ font-size: 11pt;
 <jsp:include page="../includes/header.jsp"></jsp:include>
 <a style="display:scroll;position:fixed;bottom:20px;z-index: 999;right:60px;font-size: 40px;" href="#" title="âtop">
 	<i class="fa-solid fa-circle-arrow-up"></i></a>
-<div class="card">
-   
+	<div class="card"></div>
+	<br>
+	<br>
+	<div id="slider">
+		<!-- 여기에 내용 넣으세요 -->
+
+		<div class="box_rightType">
+			<ul>
+				<li style="margin-left: 25px" onclick="location.href='/destination/list.do?destinationAddress=서울'"><button>서울시</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=경기'">경기도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=강원'">강원도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=충청북'">충청북도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=충청남'">충청남도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=경상북'">경상북도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=경상남'">경상남도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=전라북'">전라북도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=전라남'">전라남도</button></li>
+				<li><button onclick="location.href='/destination/list.do?destinationAddress=제주'">제주도</button></li>
+			</ul>
+		</div>
+		<br>
+			<table
+				class="table table-striped table-bordered table-hover" id="desListTable">
+					
+				<c:forEach items="${list}" var="destination">
+					<tr>
+		
+					<th rowspan="3" width="267px" height="160px"><a class='move' href=<c:out value="${destination.destinationNum}"/>>
+						<img src="${destination.destinationFirstImg}"  width="500"></a></th>
+						
+						
+		
+					<td style="font-size: 16pt; height: 50px;">
+					<a class='move' href=<c:out value="${destination.destinationNum}"/>>
+						<c:out value="${destination.destinationTitle}"/></td>
+					</tr>
+						<td style="font-size: 12pt;">
+						<a class='move' href=<c:out value="${destination.destinationNum}"/>>
+						<c:out value="${destination.destinationContent}"/></td>
+					<tr>
+						<td>
+						<a class='move' href=<c:out value="${destination.destinationNum}"/>>
+						<c:out value="${destination.destinationAddress}"/></td>
+					</tr>
+					
+				</c:forEach>
+			</table>
+			
+			<!-- 검색 조건 Start-->
+					<form id="searchForm" action="/destination/list.do" method="get">
+						<select name="type">
+							<option value=""   	<c:out value="${pageMaker.cri.type == null ? 'selected' : '' }"/>  	>--</option>
+							<option value="T"
+							<c:out value="${pageMaker.cri.type eq 'T' ? 'selected' : '' }"/>
+							>제목</option>
+							<option value="C" <c:out value="${pageMaker.cri.type eq 'C' ? 'selected' : '' }"/>>내용</option>
+							<option value="A" <c:out value="${pageMaker.cri.type eq 'W' ? 'selected' : '' }"/>>지역</option>
+							<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC' ? 'selected' : '' }"/>>제목+내용</option>
+							<option value="TA" <c:out value="${pageMaker.cri.type eq 'TW' ? 'selected' : '' }"/>>제목+지역</option>
+							<option value="TCA"  <c:out value="${pageMaker.cri.type eq 'TCW' ? 'selected' : '' }"/> >제목+내용+지역</option>
+						</select>
+						
+						<input type="text" name="keyword" />
+						<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+						<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+						<button class="btn btn-primary">Search</button>
+					</form>	
+							
+				<!-- 검색 조건 End -->
+			
+				<!-- 페이지 처리 Start -->
+				<div class="pull-right" align="center">
+					<ul class="pagination">
+
+						<c:if test="${pageMaker.prev }">
+							<li class="paginate_button previous"><a
+								href="${pageMaker.startPage-1}"><</a></li>
+						</c:if>
+
+						<c:forEach var="num" begin="${pageMaker.startPage }"
+							end="${pageMaker.endPage }">
+							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active" : "" }">
+								<a href="${num }">${num }</a>
+							</li>
+						</c:forEach>
+
+						<c:if test="${pageMaker.next }">
+							<li class="paginate_button next"><a
+								href="${pageMaker.endPage+1}">></a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- 페이지 처리 End -->
+				
+				<form id="actionForm" action="../destination/list.do" method="get">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+					<input type="hidden" name="type" value="${pageMaker.cri.type}">
+					<input type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
+					
+				</form>
+				
+<%-- 			<c:choose>
+				<c:when test="${user.admin==0}">
+			<div>
+			<button id="writebtn" type="button" style="float: left;">글등록</button>
+			</div>
+				</c:when>
+			</c:choose> --%>
 	</div>
-	<br><br>
-<div id="slider">
-         <!-- 여기에 내용 넣으세요 -->
-         
-         <div class="box_rightType">
-         <ul>
-         	<li style="margin-left: 25px"><button>서울시</button></li>
-         	<li><button>경기도</button></li>
-         	<li><button>강원도</button></li>
-         	<li><button>충청북도</button></li>
-         	<li><button>충청남도</button></li>
-         	<li><button>경상북도</button></li>
-         	<li><button>경상남도</button></li>
-         	<li><button>전라북도</button></li>
-         	<li><button>전라남도</button></li>
-         	<li><button>제주도</button></li>
-         </ul>
-         </div>
-         <br>
-         
-         
-         <ol class="image-list grid-view">
-			<li>
-				<div>
-					<div class="list_thumType">
-						<a href="#">
-						<img src="../img/yeosu.jpg" alt="">
-						</a>
-					</div>
-					<div>
-						<a href="#">
-							<p id=first>같은 곳은 이제 NO! 자연과 예술이 함께하는 색다른 여수 여행</p>
-							<p id="child">전라남도 여수시</p>
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<a href="#">
-						<img src="../img/Boosan.JPG" alt="">
-						</a>
-					</div>
-					<div>
-						<a href="#">
-							<p id=first>크고 넓고 따뜻한 남쪽 바다 - 부산광역시 다대포해수욕장·해변공원</p>
-							<p id="child">부산 사하구</p>
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<a href="#">
-						<img src="../img/sinchon.jpg" alt="">
-						</a>
-					</div>
-					<div>
-						<a href="#">
-							<p id=first>2022 신촌물총축제</p>
-							<p id="child">서울 서대문구</p>
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<a href="#">
-						<img src="../img/Samcheok.jpg" alt="">
-						</a>
-					</div>
-					<div>
-						<a href="#">
-							<p id=first>아이와 가기 좋은 강원도 삼척 여름휴가 여행 코스</p>
-							<p id="child">강원 삼척시</p>
-						</a>
-					</div>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<a href="#">
-						<img src="../img/Udo.JPG" alt="">
-						</a>
-					</div>
-					<div>
-						<a href="#" target="_blank">
-							<p id=first>‘신비의 섬’ 우도의 신상 여행지! 자연•문화•미식의 완전체, 훈데르트바서파크</p>
-							<p id="child">제주 제주시</p>
-						</a>
-					</div>
-				</div>
-			</li>
-		</ol>
-<button id="writebtn" type="button" onclick="location.href='destinationInsert.jsp' ">글등록</button>
-</div>
+	<script>
+		$("#writebtn").on("click", function() {
+			self.location = "/destination/register.do";
+		});
+		
+		$(".move").on("click",function(e) {
+			e.preventDefault();
+			console.log('test-------------');
+			actionForm.append("<input type = 'hidden' name = 'num' value= '"+ $(this).attr("href")+ "'>");
+			actionForm.attr("action","/destination/get.do");
+			actionForm.submit();
+		});
+		
+		var actionForm = $("#actionForm");
+		$(".paginate_button a").on(
+				"click",
+				function(e) {
+					e.preventDefault();
+					console.log('click');
+					actionForm.find("input[name='pageNum']")
+							.val($(this).attr("href"));
+					actionForm.submit();
+				});
+		
+		  window.onpageshow = function(e) {
+		         if (e.persisted || (window.performance && window.performance.navigation.type == 2)) { //뒤로가기 감지
+		            location.reload(); //현재 페이지 새로고침
+		         }
+		      }
+			var searchForm = $("#searchForm");
+			
+			$("#searchForm button").on("click", function(e){
+				e.preventDefault();
+				
+				if(!searchForm.find("option:selected").val()){
+					alert("검색종류를 선택하세요.")
+					return false;
+				}
 
-
-<jsp:include page="../includes/footer.jsp"></jsp:include>    
+				if(!searchForm.find("[name='keyword']").val()){
+					alert("키워드를 선택하세요.")
+					return false;
+				}
+				
+				searchForm.find("input[name='pageNum']").val(1);
+				searchForm.submit();
+			});
+	</script>
 </body>
 </html>

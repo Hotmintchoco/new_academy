@@ -27,8 +27,4 @@ public class Criteria {
 		this.pageNum  = pageNum;
 		this.amount = amount;
 	}
-	
-	
-	
-	
 }

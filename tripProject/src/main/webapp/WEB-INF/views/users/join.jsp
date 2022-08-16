@@ -6,12 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<script type="text/javascript" src="../js/login.find.join.js"></script>
+<script type="text/javascript" src="/resources/js/login.find.join.js"></script>
 <style type="text/css">
 * {
    font-family: 'yg-jalnan', cursive
 }
-
 @font-face {
    font-family: 'yg-jalnan';
    src:
@@ -20,11 +19,9 @@
    font-weight: normal;
    font-style: normal;
 }
-
 body {
    background-color: #f5f6f7;
 }
-
 select {
    width: 85px;
    height: 25px;
@@ -32,17 +29,14 @@ select {
    background: #f5f6f7;
    border: 1px solid #999;
 }
-
 a {
    color: black;
    text-decoration: none;
 }
-
 .main {
    text-align: center;
    margin-top: 20px;
 }
-
 input {
    cursor: pointer
 }
@@ -52,7 +46,6 @@ input {
    width: 360px;
    margin: auto;
 }
-
 .overLap {
    text-align: center;
    width: 90px;
@@ -61,7 +54,7 @@ input {
    float:right;
    margin-top: 5px;
    cursor: pointer;
-   background-color: #2ce8de;
+   background-color: #337ab7;
    color: #fff;
 }
 h3 {
@@ -69,7 +62,6 @@ h3 {
    text-align: left;
    font-size: 14px;
 }
-
 .signup-input {
    display: flex;
    /* margin: 0px 10px 8px 10px; */
@@ -79,7 +71,6 @@ h3 {
    cursor: pointer;
    border-radius: 15px;
 }
-
 .signup-input-c {
    display: flex;
    /* margin: 0px 10px 8px 10px; */
@@ -88,24 +79,20 @@ h3 {
    background: #f5f6f7;
    cursor: pointer;
 }
-
 .signup-input-c input {
    background: #f5f6f7;
 }
-
 #signup-id, #signup-pw, #signup-pww {
    height: 25px;
    border: none;
    outline: none;
    width: 100%;
 }
-
 .signup-at {
    color: rgb(150, 150, 150);
    font-size: 15px;
    margin-top: 8px;
 }
-
 .signup-input-birth {
    display: block;
    position: relative;
@@ -117,14 +104,12 @@ h3 {
    box-sizing: border-box;
    border-radius: 15px;
 }
-
 #signup-birth-yy, #signup-birth-mm, #signup-birth-dd {
    width: 90px;
    height: 25px;
    border: none;
    outline: none;
 }
-
 #checkquestion {
    width: 200px;
    height: 40px;
@@ -134,7 +119,6 @@ h3 {
    background-color: white;
    border-radius: 15px;
 }
-
 #signup-name, #signup-nickname, #signup-gender, #signup-email,
    #signup-phone, #signup-answer {
    width: 100%;
@@ -142,15 +126,12 @@ h3 {
    border: none;
    outline: none;
 }
-
 #signup-gender {
    background-color: white;
 }
-
 #signup-birth-mm {
    background-color: white;
 }
-
 .choice span {
    margin-top: 20px;
    color: rgb(150, 150, 150);
@@ -162,7 +143,7 @@ h3 {
    width: 360px;
    line-height: 55px;
    height: 55px;
-   background-color: #2ce8de;
+   background-color: #337ab7;
    border: none;
    color: #fff;
    font-size: 18px;
@@ -171,8 +152,8 @@ h3 {
    border-radius: 15px;
 }
 </style>
-<link rel="stylesheet" href="style.css">
-<script src="js/login.js"></script>
+<link rel="stylesheet" href="/resources/style.css">
+<script src="/resources/js/login.js"></script>
 
 </head>
 
@@ -182,7 +163,7 @@ h3 {
       <header>
          <!--LOGO-->
          <h2>
-            <a href="../home.do">여행가기 좋은 날</a>
+            <a href="/home.do">여행가기 좋은 날</a>
          </h2>
       </header>
 
@@ -222,9 +203,7 @@ h3 {
                <h3>&nbsp;닉네임</h3>
                <span class="signup-input"> 
                	<input id="signup-nickname" name="nickName" type="text">
-               	<input name="reNickName" type="hidden">
                </span>
-               <button class="overLap" type="button" onclick="nickNameCheck()" name="checkNick" class="checkNick">중복확인</button>
                <h3>&nbsp;이메일</h3>
                <span class="signup-input"> <input id="signup-email"
                   name="email" type="text"></input>
@@ -260,8 +239,8 @@ h3 {
                <span class="signup-input"> <select id="signup-gender"
                   class="selectbox" name="gender" onchange="">
                      <option value="gender">성별</option>
-                     <option value="male">남자</option>
-                     <option value="female">여자</option>
+                     <option value="남성">남자</option>
+                     <option value="여성">여자</option>
                </select>
                </span>
                <div style="margin-top: 10px;">
@@ -278,12 +257,12 @@ h3 {
                   <h3>&nbsp;본인 확인 질문</h3> <select id="checkquestion"
                   class="selectbox" name="question"">
                      <option value="select">&nbsp;질문을 선택하세요.</option>
-                     <option value="elementarySchool">&nbsp;초등학교 이름은?</option>
-                     <option value="middleSchool">&nbsp;중학교 이름은?</option>
-                     <option value="highSchool">&nbsp;고등학교 이름은?</option>
-                     <option value="cellPhoneName">&nbsp;처음 산 휴대전화 기종은?</option>
-                     <option value="car">&nbsp;처음 산 자동차 기종은?</option>
-                     <option value="birth">&nbsp;다시 태어난 다면?</option>
+                     <option value="초등학교">&nbsp;초등학교 이름은?</option>
+                     <option value="중학교">&nbsp;중학교 이름은?</option>
+                     <option value="고등학교">&nbsp;고등학교 이름은?</option>
+                     <option value="첫 휴대전화">&nbsp;처음 산 휴대전화 기종은?</option>
+                     <option value="첫 자동차">&nbsp;처음 산 자동차 기종은?</option>
+                     <option value="다시 태어난다면">&nbsp;다시 태어난다면?</option>
                </select>
                </span> <span class="signup-input"> <input id="signup-answer"
                   name="answer" type="text" placeholder="본인 확인 질문"></input>
@@ -296,5 +275,4 @@ h3 {
       </form>
    </div>
 </body>
-
 </html>

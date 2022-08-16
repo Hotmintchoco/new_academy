@@ -15,19 +15,11 @@ import lombok.extern.log4j.Log4j;
 public class TimeMapperTests {
 	
 	@Autowired
-	private TimeMapper timeMapper;
+	private TimeMapper mapper;
 	
 	@Test
 	public void testGetTime() {
-		log.info("-----------------------------------");
-		log.info(timeMapper.getClass().getName());
-		log.info(timeMapper.getTime());
+		log.info(mapper.getTime());
 	}
 	
-	@Test
-	public void testGetTime2() {
-		log.info("-----------------------------------");
-		log.info(timeMapper.getClass().getName());
-		log.info(timeMapper.getTime2());
-	}
 }
