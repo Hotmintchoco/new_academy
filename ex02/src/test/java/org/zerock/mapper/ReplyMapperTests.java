@@ -63,4 +63,18 @@ public class ReplyMapperTests {
 		List<ReplyVO> replies = mapper.getListWithPagging(cri, bnoArr[0]);
 		log.info(replies);
 	}
+	
+	@Test
+	public void testList2() {
+		Criteria cri = new Criteria();
+		List<ReplyVO> replies = mapper.getListWithPagging(cri, 3L);
+		
+		replies.forEach(reply -> log.info(reply));
+	}
+	
+	@Test
+	public void testCount() {
+		int num = mapper.getCountByBno(3L);
+		log.info(num);
+	}
 }

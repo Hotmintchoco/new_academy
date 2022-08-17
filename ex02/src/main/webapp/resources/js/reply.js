@@ -54,7 +54,6 @@ var replyService = (function() {
     } //end for remove
 
     function update(reply, callback, error) {
-        console.log("update...................");
 
         $.ajax({
             type:"put",
