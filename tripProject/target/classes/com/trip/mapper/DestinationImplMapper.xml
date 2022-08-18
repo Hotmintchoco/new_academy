@@ -6,10 +6,10 @@
 
 	<insert id="insert">
 		insert into destination_impl(num, title, address, firstimg,
-		mapx, mapy, mlevel, tel)
+		mapx, mapy, mlevel, tel, type)
 		values(destination_impl_seq.nextval,
 		#{title}, #{address}, #{firstimg}, #{mapx}, 
-		#{mapy}, #{mlevel}, #{tel})
+		#{mapy}, #{mlevel}, #{tel}, #{type})
 	</insert>
 	
 </mapper>

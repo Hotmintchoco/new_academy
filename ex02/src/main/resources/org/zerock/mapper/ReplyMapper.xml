@@ -41,7 +41,7 @@
 			from tbl_reply
 			where bno = #{bno}
 			and rno > 0 
-			and rownum <= #{cri.pageNum} * #{cri.amount}
+			and rownum <= #{cri.pageNum} * #{cri.amount} order by rno desc
 		)
 		where rn > (#{cri.pageNum} -1) * #{cri.amount}
 	]]>

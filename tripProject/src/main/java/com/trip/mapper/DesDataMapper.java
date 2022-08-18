@@ -16,6 +16,8 @@ public interface DesDataMapper {
 	public List<DesDataDTO> getAddressList(CityVO city);
 	
 	public int getTotalCount(CityVO city);
+	public int searchGetTotal(Criteria cri);
+	
 	public List<DesDataDTO> getListWithPagging(Criteria cri);
 	public DesDataDTO selectOne(int num);
 }

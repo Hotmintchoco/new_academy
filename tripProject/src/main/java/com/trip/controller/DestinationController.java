@@ -47,6 +47,9 @@ public class DestinationController {
 		CityVO city = new CityVO();
 		city.setAddress(destinationAddress);
 		log.info("address : " + city.getAddress());
+		if(city.getAddress() != null) {
+			log.info(city.getAddress().equals(""));
+		}
 		city.setPageNum(cri.getPageNum());
 		city.setAmount(cri.getAmount());
 		
@@ -82,8 +85,15 @@ public class DestinationController {
 		}
 		int total = mapper.getTotalCount(city);
 		log.info("total :" + total);
-		model.addAttribute("list", list);
 		model.addAttribute("pageMaker",new PageDTO(cri, total, city));
+		total = mapper.searchGetTotal(cri);
+		if(destinationAddress == null || city.getAddress().equals("")) {
+			list = mapper.getListWithPagging(cri);
+			model.addAttribute("pageMaker",new PageDTO(cri, total));
+			log.info("해당 메소드실행");
+		}
+		
+		model.addAttribute("list", list);
 		log.info("total : " + total + ", " + "Admin : " + vo.getAdmin());
 		return "destination/destination";
 	}

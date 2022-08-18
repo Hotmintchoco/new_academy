@@ -153,13 +153,13 @@ h1 { text-align: center; }
 				<!-- 검색조건 start -->
 					<form id = "SearchForm" action = "../festival/page.do" method="get" >
 						<select name='type'>
-							<option value="" <c:out value="${pageMaker.cri.type==null?'selected':''}"/>>검색</option>
-							<option value="T" <c:out value="${pageMaker.cri.type eq T?'selected':''}"/> >제목</option>
-							<option value="P" <c:out value="${pageMaker.cri.type eq P?'selected':''}"/>>지역</option>
+							<%-- <option value="" <c:out value="${pageMaker.cri.type==null?'selected':''}"/>>검색</option>
+							<option value="T" <c:out value="${pageMaker.cri.type eq T?'selected':''}"/> >제목</option> --%>
+							<option>지역</option>
 							
 						</select>
 						
-					<input type="text" name="keyword"  >	
+					<input type="text" name="fesCity"  >	
 					<input type ="hidden" name="pageNum"value='${pageMaker.cri.pageNum}'/>	
 					<input type ="hidden" name="amount"value='${pageMaker.cri.amount}'/>	
 					
@@ -172,6 +172,8 @@ h1 { text-align: center; }
 				<form id="actionForm" action="../festival/page.do" method="get">
 				<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
 				<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				<input type="hidden" name="type" value='<c:out value="${cri.type}"/>'>
+               <input type="hidden" name="keyword"   value='<c:out value="${cri.keyword}"/>'>
                 <input type="hidden" name="fesCity"   value="${pageMaker.city.address}">
 				</form>
 	

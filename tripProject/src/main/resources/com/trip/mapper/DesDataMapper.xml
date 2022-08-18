@@ -41,8 +41,6 @@
 		select * from destination order by destinationNum desc
 	</select>
 	
-	
-	
 	<sql id="getAddressListsql">
 		<trim prefix="or (" suffix=")">
 			<foreach collection="cityArr" item="city" separator="or">
@@ -52,8 +50,6 @@
 			</foreach>
 		</trim>
 	</sql>
-	
-	
 	
  	<select id="getAddressList" resultType="com.trip.domain.DesDataDTO">
  		<![CDATA[
@@ -73,8 +69,6 @@
 		
 		]]>	
 	</select>
-
-
 
 	<insert id="insert">
 		insert into destination(destinationNum, destinationTitle, destinationAddress, destinationFirstimg,
@@ -115,6 +109,12 @@
    <select id="getTotalCount" resultType="int">
     select count(*) from destination where
     	<include refid="cityTotalsql"></include>
+   	destinationNum>0
+   </select>
+
+   <select id="searchGetTotal" resultType="int">
+    select count(*) from destination where
+    	<include refid="criterial"></include>
    	destinationNum>0
    </select>
 	
