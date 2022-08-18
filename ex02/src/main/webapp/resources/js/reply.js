@@ -29,13 +29,14 @@ var replyService = (function() {
         var page = param.page || 1;
 
         $.getJSON("/replies/pages/" + bno + "/" + page + ".json",
-            function(data){
+            function(replyCnt, list){
                 if(callback) {
-                    callback(data);
+                   // callback(data); 댓글 목록만 가져오는 경우 사용
+                   callback(replyCnt, list);
                 }
             }).fail(function(xhr, status, err){
                 if(error) {
-                    error(err);
+                	error(err);
                 }
             });
     } //end for getList

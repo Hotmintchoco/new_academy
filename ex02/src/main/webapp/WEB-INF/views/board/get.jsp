@@ -74,18 +74,12 @@
          <!-- /.panel-heading -->
          <div class="panel-body">
          	<ul class="chat">
-         		<!-- <li class="left clearfix" data-rno='12'>
-         			<div>
-         				<div class="header">
-         					<strong class="primary-font">user00</strong>
-         					<small class="pull-right text-muted">2018-01-01 12:12</small>
-         				</div>
-         				<p>댓글 테스트</p>
-         			</div>
-         		</li> -->
          	</ul>
          </div>
      	 <!-- /.panel-body -->
+     	 <div class="panel-footer">
+     	 </div>
+     	 <!-- /.panel-footer -->
       </div>
       <!-- /.panel -->
    </div>
@@ -194,6 +188,7 @@ $(document).ready(function(){
 			alert("RESULT : " + result);
 			modal.find("input").val("");
 			modal.modal("hide");
+			showList(-1);
 		});
 		
 	}); //Register 등록
@@ -220,24 +215,75 @@ $(document).ready(function(){
 	//이벤트위임_끝
 	
 	function showList(page){
+		console.log("show list : " + page);
 		replyService.getList(
 			{bno:bnoValue, page:page || 1},
-			function(list){
-				var str="";
-				if(list == null || list.length==0){
-					replyUL.html("");
+			function(list, success){
+				console.log("page : " + page);
+				console.log("list : " + list);
+				console.log(success);
+				console.log("replyCnt : " + list.replyCnt);
+				if(page == -1) {
+					pageNum = Math.ceil(list.replyCnt/10.0);
+					showList(pageNum);
 					return;
 				}
-				for(var i=0, len = list.length || 0; i<len; i++){
-					str += "<li class='left clearfix' data-rno='"+list[i].rno+"'>";
-					str += "<div><div class='header'><strong class='primary-font'>"+list[i].replyer+"</strong>";
-					str += "<small class='pull-right text-muted'>"+replyService.displayTime(list[i].replyDate)+"</small></div>";
-					str += "<p>"+list[i].reply+"</p></div></li>";
+				
+				var str="";
+				if(list == null || list.length==0){
+					//replyUL.html("");
+					return;
+				}
+				console.log(pageNum);
+				for(var i=0, len = list.replyCnt || 0; i<len; i++){
+					str += "<li class='left clearfix' data-rno='"+list.list[i].rno+"'>";
+					str += "<div><div class='header'><strong class='primary-font'>"+list.list[i].replyer+"</strong>";
+					str += "<small class='pull-right text-muted'>"+replyService.displayTime(list.list[i].replyDate)+"</small></div>";
+					str += "<p>"+list.list[i].reply+"</p></div></li>";
 				}
 				replyUL.html(str);
+				
+				showReplyPage(list.replyCnt);
 			}
 		)//end Service
 	}//end showList
+	
+	//댓글 페이지 출력 부분
+	var pageNum = 1;
+	var replyPageFooter = $(".panel-footer");
+	
+	function showReplyPage(replyCnt) {
+		var endNum = Math.ceil(pageNum/10.0)*10;
+		var startNum = endNum - 9;
+		
+		console.log(endNum);
+		var prev = startNum != 1;
+		var next = false;
+		
+		if(endNum <= replyCnt){
+			next = true;
+		}
+		
+		var str = "<ul class='pagination pull-right'>";
+		if(prev) {
+			str += "<li class='page-item'><a class='page-link' href='"+ (startNum-1) +"'>Previous</a></li>";
+		}
+		
+		for(var i=startNum; i<=endNum/10; i++){
+			var active = pageNum == i ? "active" : "";
+			str += "<li class='page-item "+active+"'><a class='page-link' href='"+ i +"'>"+ i +"</a></li>";
+			
+			if(next) {
+				str += "<li class='page-item'><a class='page-link' href='"+ (startNum-1) +"'>Next</a></li>";
+			}
+			
+			str += "</ul></div>";
+			
+			console.log("str : " + str);
+			
+			replyPageFooter.html(str);
+		}
+	}// end showReplyPage
 });
 	
 	/* replyService.get(11, function(data){
