@@ -28,6 +28,7 @@ public class ResDataMapperTest {
 	public void test() {
 		String str = "1877-7020<br />052-956-0100";
 		log.info(str);
+		log.info(str.contains("<br />"));
 		str = str.replaceAll("<br />", "/");
 		log.info(str);
 	}

@@ -6,11 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Servlet"/>
+		<item key="selection" value="showList"/>
 		<list key="findhistory">
+			<item value="showList"/>
+			<item value="showReplyPage"/>
+			<item value="jstl"/>
 			<item value="Servlet"/>
 			<item value="4j"/>
-			<item value="jstl"/>
 			<item value="jdbc"/>
 			<item value="aspect"/>
 			<item value="asfect"/>
