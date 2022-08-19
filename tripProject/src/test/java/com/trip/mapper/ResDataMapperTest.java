@@ -2,6 +2,7 @@ package com.trip.mapper;
 
 import java.io.IOException;
 
+import org.apache.jasper.tagplugins.jstl.core.If;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -82,6 +83,10 @@ public class ResDataMapperTest {
 				dto.setFirstimg(firstImg);
 				dto.setMapx(mapX);
 				dto.setMapy(mapY);
+				if(tel.contains("<br />")) {
+					tel = tel.replaceAll("<br />", " / ");
+				}
+				
 				dto.setTel(tel);
 				dto.setType(2);  
 				if(elmLevel.get(i).text().length() > 0) {

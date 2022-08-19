@@ -73,6 +73,10 @@ public class HotelDataMapperTest {
 				dto.setFirstimg(firstImg);
 				dto.setMapx(mapX);
 				dto.setMapy(mapY);
+				
+				if(tel.contains("<br />")) {
+					tel = tel.replaceAll("<br />", " / ");
+				}
 				dto.setTel(tel);
 				dto.setType(1);
 				if(elmLevel.get(i).text().length() > 0) {
