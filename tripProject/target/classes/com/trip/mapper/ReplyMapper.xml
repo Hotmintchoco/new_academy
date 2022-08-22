@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.trip.mapper.ReplyMapper">
+	<insert id="insert">
+		insert into board_reply(rno, bno, reply, usernum)
+		values(seq_reply.nextval, #{bno}, #{reply}, #{usernum})
+	</insert>
+	
+	<select id="read" resultType="com.trip.domain.ReplyVO">
+		select * from board_reply where rno = #{rno}
+	</select>
+	
+	<delete id="delete">
+		delete from board_reply where rno = #{rno}
+	</delete>
+	
+	<update id="update">
+		update board_reply set
+		reply = #{reply},
+		replydate = sysdate
+		where rno = #{rno}
+	</update>
+	
+	<!-- <select id="getListWithPagging" resultType="org.zerock.domain.ReplyVO">
+		select rno, bno, reply, replyer, replyDate, updateDate
+		from tbl_reply
+		where bno = #{bno}
+		order by rno desc
+	</select> -->
+	
+	<select id="getListWithPagging" resultType="com.trip.domain.ReplyVO">
+	
+	<![CDATA[
+		select rno, bno, reply, usernum, replyDate
+		from (
+			select /*+ index_desc(board_reply BOARD_REPLY_PK) */
+			rownum rn, rno, bno, reply, usernum, replyDate
+			from board_reply
+			where bno = #{bno}
+			and rno > 0 
+			and rownum <= #{cri.pageNum} * #{cri.amount}
+		)
+		where rn > (#{cri.pageNum} -1) * #{cri.amount}
+	]]>
+	
+	</select>
+	
+	<select id="getCountByBno" resultType="int">
+		select count(rno) from board_reply where bno = #{bno}
+	</select>
+</mapper>

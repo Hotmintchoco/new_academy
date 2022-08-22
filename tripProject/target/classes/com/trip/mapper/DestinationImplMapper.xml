@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.trip.mapper.DestinationImplMapper">
+
+	<sql id="getAddressListsql">
+		<trim prefix="or (" suffix=")">
+			<foreach collection="cityArr" item="city" separator="or">
+				<if test="city != null">
+					address like '%'|| #{city} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<sql id="cityTotalsql">
+		<trim prefix="(" suffix=") and">
+			<if test="address != null">
+				address like '%'|| #{address} ||'%'
+			</if>
+			<if test="city != null">
+				or
+			</if>
+			<foreach collection="cityArr" item="city" separator="or">
+				<if test="city != null">
+					address like '%'|| #{city} ||'%'
+				</if>
+			</foreach>
+		</trim>
+	</sql>
+	
+	<!-- 음식점/호텔 데이터 크롤링용 insert구문 -->
+	<insert id="insert">
+		insert into destination_impl(num, title, address, firstimg,
+		mapx, mapy, mlevel, tel, type)
+		values(destination_impl_seq.nextval,
+		#{title}, #{address}, #{firstimg}, #{mapx}, 
+		#{mapy}, #{mlevel}, #{tel}, #{type})
+	</insert>
+	
+	<!-- 지역 누르면 sort -->	
+	<select id="getAddressList" resultType="com.trip.domain.DestinationImplData">
+ 		<![CDATA[
+			select num, title, address, firstimg, tel
+		from(
+			select /*+ INDEX(destination_impl indexNum)*/
+			rownum rn, num, title, address, firstimg, tel
+			from destination_impl
+		where 
+		(address like '%'|| #{address} ||'%'
+		]]>
+		<include refid="getAddressListsql"></include>
+		<![CDATA[
+		) and ROWNUM <= #{pageNum}*#{amount})
+		where
+		rn > (#{pageNum}-1)*#{amount}
+		
+		]]>	
+	</select>
+	
+	<!-- 전체 리스트 조회 -->	
+	<select id="getList" resultType="com.trip.domain.DestinationImplData">
+ 		<![CDATA[
+		select num, title, address, firstimg, tel
+		from(
+			select /*+ INDEX(destination_impl indexNum)*/
+			rownum rn, num, title, address, firstimg, tel
+			from destination_impl
+        where
+        ROWNUM <= #{pageNum}* #{amount})
+		where
+		rn > (#{pageNum}-1)*#{amount}
+		
+		]]>	
+	</select>
+	
+	<!-- 전체 count -->
+	<select id="getTotalCount" resultType="int">
+    select count(*) from destination_impl where
+    	<include refid="cityTotalsql"></include>
+   	num>0
+   </select>
+   
+   <select id="get" resultType="com.trip.domain.DestinationImplData">
+   		select * from destination_impl where num = #{num}
+   </select>
+	
+</mapper>
