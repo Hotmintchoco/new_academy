@@ -13,4 +13,13 @@ public class CityVO {
 		return city == null ? new String[] {} : city.split(" ");
 	}
 	
+	public CityVO() {
+		this(1, 10);
+	}
+	
+	public CityVO(int pageNum, int amount) {
+		this.pageNum = pageNum;
+		this.amount = amount;
+	}
+	
 }

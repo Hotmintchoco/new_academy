@@ -28,15 +28,13 @@ public class DesImplController {
 	private DestinationImplMapper mapper;
 	
 	@GetMapping("list.do")
-	public String list(Criteria cri, Model model, String desCity) {
+	public String list(Criteria cri, Model model, String desCity, CityVO city) {
 		log.info("지역 : " + desCity);
+		log.info("타입 : " + city.getType());
 		List<DestinationImplData> list = new ArrayList<>();
 
-		CityVO city = new CityVO();
 		city.setAddress(desCity);
 		log.info(city.getAddress());
-		city.setPageNum(cri.getPageNum());
-		city.setAmount(cri.getAmount());
 		
 		list = searchCityList(list, desCity, city);
 		

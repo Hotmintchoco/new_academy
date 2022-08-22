@@ -52,7 +52,7 @@
 		]]>
 		<include refid="getAddressListsql"></include>
 		<![CDATA[
-		) and ROWNUM <= #{pageNum}*#{amount})
+		) and ROWNUM <= #{pageNum}* #{amount})
 		where
 		rn > (#{pageNum}-1)*#{amount}
 		
