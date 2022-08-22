@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="showList"/>
+		<item key="selection" value="PageNum"/>
 		<list key="findhistory">
+			<item value="pageNum"/>
 			<item value="showList"/>
 			<item value="showReplyPage"/>
 			<item value="jstl"/>

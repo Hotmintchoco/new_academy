@@ -43,7 +43,13 @@
 							</td> --%>
 							<td>
 								<a class='move' href="<c:out value="${board.bno}"/>">
-								<c:out value="${board.title}"/></a>
+								<c:out value="${board.title}"/>
+								
+								<c:if test="${board.replyCnt != 0}">
+									<b>[<c:out value="${board.replyCnt}"/>]</b>
+								</c:if>
+								
+								</a>
 							</td>
 							<td><c:out value="${board.writer}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd"
