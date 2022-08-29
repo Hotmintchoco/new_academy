@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.zerock.service.ReplyService"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="com.trip.controller.CourseController"/>
-    <fullyQualifiedTypeName name="com.trip.mapper.CourseMapper"/>
-    <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="javax.print.attribute.standard.Media"/>
     <fullyQualifiedTypeName name="java.awt.PageAttributes.MediaType"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
@@ -26,8 +19,6 @@
     <fullyQualifiedTypeName name="com.trip.domain.City"/>
     <fullyQualifiedTypeName name="com.trip.domain.Criteria"/>
     <fullyQualifiedTypeName name="java.lang.Long"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.zerock.domain.ReplyVO"/>
     <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
     <fullyQualifiedTypeName name="org.zerock.domain.Criteria"/>
     <fullyQualifiedTypeName name="org.zerock.domain.ReplyPageDTO"/>
@@ -55,9 +46,18 @@
     <fullyQualifiedTypeName name="org.zerock.service.SampleService"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="org.junit.Test"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="org.zerock.service.SampleTxService"/>
-    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
     <fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.If"/>
     <fullyQualifiedTypeName name="com.trip.domain.BoardVO"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
+    <fullyQualifiedTypeName name="org.zerock.mapper.BoardMapper"/>
+    <fullyQualifiedTypeName name="java.lang.Void"/>
+    <fullyQualifiedTypeName name="org.zerock.domain.ReplyVO"/>
+    <fullyQualifiedTypeName name="org.zerock.service.ReplyService"/>
+    <fullyQualifiedTypeName name="org.zerock.mapper.ReplyMapper"/>
+    <fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="com.trip.domain.CityVO"/>
 </qualifiedTypeNameHistroy>
